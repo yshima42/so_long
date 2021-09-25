@@ -5,7 +5,7 @@ NAME			= so_long
 INCLUDES		= -I./includes
 SRCS_PATH		= ./srcs/
 LIBFT_PATH		= ./libft/
-MLX_PATH		= ./minilibx-linux/
+MLX_PATH		= ./mlx_linux/
 SRCS_FILES    	= $(SRCS_PATH)main.c
 SRCS_OBJS		= ${SRCS_FILES:.c=.o}
 LIBFTMAKE		= $(MAKE) -C ${LIBFT_PATH}
