@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char static	*del_spaces(char const *str)
+static char	*del_spaces(char const *str)
 {
 	char	*no_spaces_str;
 	size_t	i;
@@ -25,7 +25,7 @@ char static	*del_spaces(char const *str)
 	return (no_spaces_str);
 }
 
-int static	max_check(size_t result, char *ns_str, size_t i, int sign)
+static int	max_check(size_t result, char *ns_str, size_t i, int sign)
 {
 	size_t	temp;
 

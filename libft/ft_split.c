@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void static	*free_all(char **dest, size_t i)
+static void	*free_all(char **dest, size_t i)
 {
 	size_t	j;
 
@@ -26,7 +26,7 @@ void static	*free_all(char **dest, size_t i)
 	return (NULL);
 }
 
-char static	*char_malloc(char const *src, char c, size_t i)
+static char *char_malloc(char const *src, char c, size_t i)
 {
 	size_t	len;
 	char	*ptr;
@@ -42,7 +42,7 @@ char static	*char_malloc(char const *src, char c, size_t i)
 	return (ptr);
 }
 
-size_t static	line_count(char const *str, char c)
+static size_t	line_count(char const *str, char c)
 {
 	size_t	one_before;
 	size_t	count;
