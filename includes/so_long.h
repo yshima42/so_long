@@ -4,11 +4,6 @@
 #include "../libft/libft.h"
 #include "../mlx_linux/mlx.h"
 
-typedef struct s_conf
-{
-    void        *mlx;
-	void		*win;
-}  t_conf;
 
 
 #endif
