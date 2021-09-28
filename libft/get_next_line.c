@@ -39,7 +39,7 @@ static int	line_output(t_gnl **t_buff, char *ptr, char **ret)
 
 	if (ptr)
 	{
-		*ret = ft_strndup((*t_buff)->memo, ptr - ((*t_buff)->memo) + 1);
+		*ret = ft_strndup((*t_buff)->memo, ptr - ((*t_buff)->memo));
 		tmp = ft_strndup(ptr + 1, ft_strlen(ptr + 1));
 		free((*t_buff)->memo);
 		(*t_buff)->memo = tmp;
