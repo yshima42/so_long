@@ -98,8 +98,8 @@ void	collect_item(char *a, char *b, t_conf *conf);
 int     next_pos_check(char next_pos_c, char check_c);
 
 //error_output.c
-void maperror_output(char **map, char *output);
-void wall_no_rectangular(char **map, t_conf *conf);
+void 	maperror_output(char **map, char *output);
+void	perror_exit(char *error_message);
 
 //delete later
 void    destructor_leaks(void);

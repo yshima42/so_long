@@ -15,7 +15,13 @@
 void	maperror_output(char **map, char *output)
 {
 	map = ft_arrayfree(map);
-	ft_putstr_fd("Error(Map): ", 2);
+	ft_putstr_fd("Error\nMap: ", 2);
 	ft_putstr_fd(output, 2);
 	exit(EXIT_SUCCESS);
+}
+
+void	perror_exit(char *error_message)
+{
+	perror(error_message);
+	exit(EXIT_FAILURE);
 }

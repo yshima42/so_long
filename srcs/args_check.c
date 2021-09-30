@@ -31,7 +31,7 @@ void	args_check(int ac, char **av)
 {
 	if (ac != 2 || extension_check(av[1]) == -1)
 	{
-		ft_putstr_fd("Error(Args): ./so_long xxx.ber", 2);
+		ft_putstr_fd("Error\nUsage: ./so_long xxx.ber", 2);
 		exit (EXIT_SUCCESS);
 	}
 }

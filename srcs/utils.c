@@ -54,7 +54,7 @@ char	**lst_to_array(t_list *buf, size_t height, char **map)
 		t_buf = buf;
 		map = (char **)malloc(sizeof(char *) * height + 1);
 		if (!map)
-			exit(EXIT_FAILURE);//need perror??
+			perror_exit("Error\nmalloc: ");
 		i = 0;
 		while (t_buf)
 		{
