@@ -8,17 +8,20 @@
 - norminette
 - bonus
     - animation
+- mlx null check
+- error \n check
+- NULL ume
 
 - exit situation
     - arg
-    - map_check
-    - ESC
-    - EXIT
+    - map_check 
+    - ESC 
+    - EXIT 
 
 - question
-    - when malloc failure, need to show some comments?
-    - when gnl would be a problem?
-    - valgrind error
-    - map error at the same time
+    - when malloc failure, need to show some comments? yaru
+    - when gnl would be a problem? yaranai
+    - valgrind error 
+    - map error at the same time ok
     - what happen when you walk too much (size_t < ) ok
-    - no 0 in the map OK? 
+    - no 0 in the map OK? ok

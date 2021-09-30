@@ -16,7 +16,7 @@ void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf))
 {
 	size_t	x;
 	size_t	y;
-	char	*output;
+	char	*error_message;
 
 	y = -1;
 	while (map[++y])
@@ -24,9 +24,9 @@ void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf))
 		x = -1;
 		while (map[y][++x])
 		{
-			output = f(map[y][x], conf);
-			if (output)
-				maperror_output(map, output);
+			error_message = f(map[y][x], conf);
+			if (error_message)
+				maperror_output(map, error_message);
 		}
 	}
 }

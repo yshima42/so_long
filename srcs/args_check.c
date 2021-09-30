@@ -21,7 +21,7 @@ int	extension_check(char *filename)
 		return (-1);
 	else
 	{
-		if (ft_strncmp(dot_ptr, ".bar", 4))
+		if (ft_strncmp(dot_ptr, ".ber", 4))
 			return (-1);
 	}
 	return (0);
@@ -31,7 +31,7 @@ void	args_check(int ac, char **av)
 {
 	if (ac != 2 || extension_check(av[1]) == -1)
 	{
-		ft_putstr_fd("Error(Args): ./so_long xxx.bar", 2);
+		ft_putstr_fd("Error(Args): ./so_long xxx.ber", 2);
 		exit (EXIT_SUCCESS);
 	}
 }

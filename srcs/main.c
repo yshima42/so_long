@@ -73,6 +73,17 @@ int	key_hook(int keycode, t_conf *conf)
 	return (0);
 }
 
+void	my_mlx_desplay(t_conf *conf)
+{
+	conf->mlx = mlx_init();
+	if (!conf->mlx)
+		free_all_exit(conf);
+	chip_set(conf);
+	conf->win = mlx_new_window(conf->mlx, SCREAN_SIZE * CHIP_SIZE,
+			SCREAN_SIZE * CHIP_SIZE, "so_long");
+	array_to_screan(conf->map.map, conf);
+}
+
 int	main(int ac, char **av)
 {
 	t_conf	conf;
@@ -82,12 +93,8 @@ int	main(int ac, char **av)
 	conf.map.map = map_set(av[1], &conf);
 	map_check(conf.map.map, &conf);
 	player_pos_check(conf.map.map, &conf);
-	conf.mlx = mlx_init();
-	chip_set(&conf);
-	conf.win = mlx_new_window(conf.mlx, SCREAN_SIZE * CHIP_SIZE,
-			SCREAN_SIZE * CHIP_SIZE, "so_long");
-	array_to_screan(conf.map.map, &conf);
-	mlx_key_hook(conf.win, key_hook, &conf);
+	my_mlx_desplay(&conf);
+	mlx_hook(conf.win, 2, 1L << 0, key_hook, &conf);
 	mlx_hook(conf.win, 33, 1L << 17, free_all_exit, &conf);
 	mlx_loop(conf.mlx);
 }

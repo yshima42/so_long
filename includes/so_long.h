@@ -19,7 +19,6 @@ typedef	struct s_map
 	char	**map;
 	size_t	width;
 	size_t	height;
-	/* uint8_t	map_flag; */
 	size_t	n_collectibles;
 	size_t	n_players;
 	size_t	n_exit;
@@ -32,7 +31,6 @@ typedef struct s_images
 	void	*collectible;
 	void	*exit;
 	void	*player;
-	void	*player_2;
 	int		size;
 }	t_images;
 
@@ -44,12 +42,6 @@ typedef struct s_conf
 	t_images	images;
 	t_player	player;
 }	t_conf;
-
-/* # define FLAG_EMPTY 		1 << 0 // 0000 0001
-# define FLAG_WALL 			1 << 1 // 0000 0010
-# define FLAG_COLLECTIBLE 	1 << 2 // 0000 0100
-# define FLAG_EXIT 			1 << 3 // 0000 1000
-# define FLAG_PLAYER 		1 << 4 // 0001 0000 */
 
 # define VALID_CHAR 		"01CEP"
 

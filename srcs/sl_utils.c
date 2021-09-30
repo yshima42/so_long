@@ -58,26 +58,48 @@ void	array_to_screan(char **map, t_conf *conf)
 
 void	chip_set(t_conf *conf)
 {
-	conf->images.size = CHIP_SIZE;
 	conf->images.empty = mlx_xpm_file_to_image(conf->mlx, IMG_EMPTY,
 			&conf->images.size, &conf->images.size);
+	if (!conf->images.empty)
+		free_all_exit(conf);
 	conf->images.wall = mlx_xpm_file_to_image(conf->mlx, IMG_WALL,
 			&conf->images.size, &conf->images.size);
+	if (!conf->images.wall)
+		free_all_exit(conf);
 	conf->images.collectible = mlx_xpm_file_to_image(conf->mlx, IMG_COLLECTIBLE,
 			&conf->images.size, &conf->images.size);
+	if (!conf->images.collectible)
+		free_all_exit(conf);
 	conf->images.exit = mlx_xpm_file_to_image(conf->mlx, IMG_EXIT,
 			&conf->images.size, &conf->images.size);
+	if (!conf->images.exit)
+		free_all_exit(conf);
 	conf->images.player = mlx_xpm_file_to_image(conf->mlx, IMG_PLAYER,
 			&conf->images.size, &conf->images.size);
+	if (!conf->images.player)
+		free_all_exit(conf);
 }
 
 void	initialize_conf(t_conf *conf)
 {
-	conf->player.n_steps = 0; //initialize
-	conf->player.collectibles = 0; // need to initialize some variable
+	conf->mlx = NULL;
+	conf->win = NULL;
+	conf->map.map = NULL;
+	conf->map.width = 0;
+	conf->map.height = 0;
 	conf->map.n_collectibles = 0;
-	conf->map.n_exit = 0;
 	conf->map.n_players = 0;
+	conf->map.n_exit = 0;
+	conf->images.empty = NULL;
+	conf->images.wall = NULL;
+	conf->images.collectible = NULL;
+	conf->images.exit = NULL;
+	conf->images.player = NULL;
+	conf->images.size = CHIP_SIZE;
+	conf->player.pos_y = 0;
+	conf->player.pos_x = 0;
+	conf->player.n_steps = 0;
+	conf->player.collectibles = 0;
 }
 
 void	step_counter(t_conf *conf)
