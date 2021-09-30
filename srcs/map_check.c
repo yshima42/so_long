@@ -57,12 +57,15 @@ char	*inmap_char_count(char c, t_conf *conf)
 		conf->map.n_exit++;
 	if (c == 'P')
 		conf->map.n_players++;
-    return (NULL);
+    if (conf->map.n_collectibles > SIZE_MAX || conf->map.n_exit > SIZE_MAX)
+        return ("Too many C or E");
+    else
+        return (NULL);
 }
 
 void	n_char_check(char **map, t_conf *conf)
 {
 	if (!conf->map.n_exit || conf->map.n_players != 1
 		|| !conf->map.n_collectibles)
-        maperror_output(map, "Need one P, some E, some C in the file\n");
+        maperror_output(map, "Need one P, more than one E, more than one C in the file\n");
 }

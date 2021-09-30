@@ -63,7 +63,7 @@ void	initialize_conf(t_conf *conf)
 	conf->player.n_steps = 0; //initialize
 	conf->player.collectibles = 0; // need to initialize some variable
 	conf->map.n_collectibles = 0;
-	conf->map.n_players = 0;
+	conf->map.n_exit = 0;
 	conf->map.n_players = 0;
 }
 
@@ -71,4 +71,9 @@ void	step_counter(t_conf *conf)
 {
 	conf->player.n_steps++;
 	printf("Number of steps: %ld\n", conf->player.n_steps);
+    if (conf->player.n_steps > SIZE_MAX)
+    {
+        ft_putstr_fd("Game Over: You walked way too much!!\n", 2);
+        free_all_exit(conf);
+    }
 }

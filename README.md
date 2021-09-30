@@ -6,7 +6,6 @@
 - libft error handling
 - size_t and int : over flow
 - norminette
-- Clicking on the red cross on the window’s frame must close the window and quit the program cleanly.
 - bonus
     - animation
 
