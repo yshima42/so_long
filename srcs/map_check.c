@@ -61,7 +61,8 @@ char	*invalid_char_check(char c, t_conf *conf)
 	(void)conf;
 	if (ft_strchr(VALID_CHAR, c) == NULL)
 		return ("Invalid charactor in the file\n");
-	return (NULL);
+	else
+		return (NULL);
 }
 
 char	*inmap_char_count(char c, t_conf *conf)
