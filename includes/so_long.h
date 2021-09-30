@@ -103,7 +103,7 @@ void    player_move(int keycode, t_conf *conf);
 void	step_to_next(char *current_pos, char *next_pos, t_conf *conf);
 void	game_complete(char *a, char *b, t_conf *conf);
 void	collect_item(char *a, char *b, t_conf *conf);
-int next_pos_check(char next_pos_c, char check_c);
+int     next_pos_check(char next_pos_c, char check_c);
 
 //error_output.c
 void maperror_output(char **map, char *output);

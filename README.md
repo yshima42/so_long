@@ -1,6 +1,6 @@
 # remaining tasks
 - scroll ok
-- free ? check the error thing
+- free ? check the error statement
 - map error at the same time
 - gnl error handling
 - libft error handling
@@ -16,9 +16,9 @@
     - EXIT
 
 - question
-    - when malloc failure
-    - when gnl be problem
+    - when malloc failure, need to show some comments?
+    - when gnl would be a problem?
     - valgrind error
     - map error at the same time
-    - what happen when you walk too much (size_t < )
-    - no 0 in the map OK?
+    - what happen when you walk too much (size_t < ) ok
+    - no 0 in the map OK? 

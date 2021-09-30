@@ -37,18 +37,21 @@ char	**lst_to_array(t_list *buf, size_t height, char **map)
 	t_list	*t_buf;
 	size_t	i;
 
-	t_buf = buf;
-	map = (char **)malloc(sizeof(char *) * height + 1);
-	if (!map)
-		exit(EXIT_FAILURE);//need perror??
-	i = 0;
-	while (t_buf)
-	{
-		map[i] = ft_strdup(t_buf->content);
-		t_buf = t_buf->next;
-		i++;
-	}
-	map[i] = NULL;
+	if (height < INT32_MAX)
+    {
+        t_buf = buf;
+        map = (char **)malloc(sizeof(char *) * height + 1);
+        if (!map)
+            exit(EXIT_FAILURE);//need perror??
+        i = 0;
+        while (t_buf)
+        {
+            map[i] = ft_strdup(t_buf->content);
+            t_buf = t_buf->next;
+            i++;
+        }
+        map[i] = NULL;
+    }
 	ft_lstclear(&buf, free);
 	return (map);
 }

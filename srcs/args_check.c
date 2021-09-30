@@ -17,12 +17,7 @@ int	extension_check(char *filename)
 
 void	args_check(int ac, char **av)
 {
-	if (ac != 2)
-	{
-		ft_putstr_fd("Error(Args): ./so_long xxx.bar", 2);
-		exit (EXIT_SUCCESS);
-	}
-	if (extension_check(av[1]) == -1)
+	if (ac != 2  || extension_check(av[1]) == -1)
 	{
 		ft_putstr_fd("Error(Args): ./so_long xxx.bar", 2);
 		exit (EXIT_SUCCESS);

@@ -74,6 +74,7 @@ int	main(int ac, char **av)
 	chip_set(&conf);
 	conf.win = mlx_new_window(conf.mlx, SCREAN_SIZE * CHIP_SIZE,
 			SCREAN_SIZE * CHIP_SIZE, "so_long");
+	array_to_screan(conf.map.map, &conf);
 	mlx_key_hook(conf.win, key_hook, &conf);
 	mlx_hook(conf.win, 33, 1L << 17, free_all_exit, &conf);
 	mlx_loop(conf.mlx);

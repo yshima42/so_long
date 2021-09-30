@@ -11,8 +11,12 @@ LIBFTMAKE		= $(MAKE) -C $(LIBFT_PATH)
 LIBFTFLAG		= -L$(LIBFT_PATH) -lft
 MLXMAKE			= $(MAKE) -C $(MLX_PATH)
 MLXFLAG			= -Lmlx_linux -lmlx -lXext -lX11 -lm -lbsd -Imlx_linux
+GITMLX			= git clone https://github.com/42Paris/minilibx-linux.git mlx_linux
 
 all:			$(NAME)
+
+$(MLX_PATH):
+				$(GITMLX)
 
 $(NAME):		$(MLX_PATH) $(SRCS_OBJS) lib mlx
 				$(CC) $(CFLAGS) $(SRCS_OBJS) $(LIBFTFLAG) $(MLXFLAG) -o $(NAME)
@@ -33,7 +37,7 @@ clean:
 
 fclean:			clean
 				$(LIBFTMAKE) fclean
-				rm -f $(MLX_PATH)/libmlx.a
+				$(RM) $(MLX_PATH)/libmlx.a
 				$(RM) $(NAME) $(SRCS_PATH)$(SRCS_OBJS)
 
 re:				fclean all

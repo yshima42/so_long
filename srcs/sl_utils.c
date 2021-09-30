@@ -14,22 +14,23 @@ void	*chr_to_imgptr(char c, t_conf *conf)
 		return (conf->images.player);
 	else
 	{
-		ft_putstr_fd("never come here", 2);
-		exit(EXIT_SUCCESS); // it shouldn't come here
+		ft_putstr_fd("You cannot come here!!", 2);
+        free_all_exit(conf);
+        return(NULL);
 	}
 }
 
 void	array_to_screan(char **map, t_conf *conf)
 {
-	void	*img_ptr;
-	size_t	y;
-	size_t	x;
-	size_t	scroll_y;
-	size_t	scroll_x;
+	void    *img_ptr;
+	int	    y;
+	int	    x;
+	int	    scroll_y;
+	int	    scroll_x;
 
 	mlx_clear_window(conf->mlx, conf->win);
-	scroll_y = conf->player.pos_y / SCREAN_SIZE * SCREAN_SIZE;
-	scroll_x = conf->player.pos_x / SCREAN_SIZE * SCREAN_SIZE;
+	scroll_y = (conf->player.pos_y / SCREAN_SIZE) * SCREAN_SIZE;
+	scroll_x = (conf->player.pos_x / SCREAN_SIZE) * SCREAN_SIZE;
 	y = -1;
 	while (map[++y + scroll_y])
 	{

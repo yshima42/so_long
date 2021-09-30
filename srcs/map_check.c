@@ -2,8 +2,8 @@
 
 void	rectangular_check(char **map, t_conf *conf)
 {
-	size_t	x;
-	size_t	y;
+	int	x;
+	int	y;
 
 	y = -1;
 	while (map[++y])
@@ -13,6 +13,8 @@ void	rectangular_check(char **map, t_conf *conf)
 		{
 			if (y == 0)
 				conf->map.width = ft_strlen(map[y]);
+            if (conf->map.width > INT32_MAX)
+                maperror_output(map, "Map is too big\n");
 			if (conf->map.width != ft_strlen(map[y]))
 				maperror_output(map, "Not rectangular or No first line in the file\n");
 		}
