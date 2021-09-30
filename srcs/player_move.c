@@ -1,9 +1,9 @@
 #include "../includes/so_long.h"
 
-void player_move(int keycode, t_conf *conf)
+void	player_move(int keycode, t_conf *conf)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = conf->player.pos_x;
 	y = conf->player.pos_y;
@@ -17,12 +17,12 @@ void player_move(int keycode, t_conf *conf)
 		step_to_next(&conf->map.map[y][x], &conf->map.map[y][x + 1], conf);
 }
 
-int next_pos_check(char next_pos_c, char check_c)
+int	next_pos_check(char next_pos_c, char check_c)
 {
 	if (next_pos_c == check_c)
 		return (1);
 	else
-		return (0);	
+		return (0);
 }
 
 void	collect_item(char *a, char *b, t_conf *conf)

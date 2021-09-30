@@ -18,7 +18,7 @@ void	array_loop(char **map, t_conf *conf, void f(char c, t_conf *conf))
 
 int	ft_open_readfile(char *readfile)
 {
-	int fd;
+	int	fd;
 
 	fd = open(readfile, O_RDONLY);
 	if (fd == -1)
@@ -34,7 +34,7 @@ char	**lst_to_array(t_list *buf, size_t height, char **map)
 {
 	t_list	*t_buf;
 	size_t	i;
-	
+
 	t_buf = buf;
 	map = (char **)malloc(sizeof(char *) * height + 1);
 	if (!map)
@@ -55,9 +55,9 @@ size_t	file_to_lst(int fd, t_list **buf)
 {
 	char	*line;
 	size_t	l_count;
-	
+
 	l_count = 0;
-	while(1)
+	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
@@ -71,9 +71,9 @@ size_t	file_to_lst(int fd, t_list **buf)
 	return (l_count);
 }
 
-void ft_swap(char *a, char *b)
+void	ft_swap(char *a, char *b)
 {
-	char tmp;
+	char	tmp;
 
 	tmp = *a;
 	*a = *b;

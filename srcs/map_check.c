@@ -1,6 +1,6 @@
 #include "../includes/so_long.h"
 
-void    rectangular_check(char **map, t_conf *conf)
+void	rectangular_check(char **map, t_conf *conf)
 {
 	size_t	x;
 	size_t	y;
@@ -23,18 +23,19 @@ void    rectangular_check(char **map, t_conf *conf)
 	}
 }
 
+//more than 25 lines
 void	wall_check(char **map, t_conf *conf)
 {	
 	size_t	x;
 	size_t	y;
-	
+
 	y = -1;
 	while (map[++y])
 	{
 		if (y == 0 || y == conf->map.height - 1)
 		{
 			x = -1;
-			while(map[y][++x])
+			while (map[y][++x])
 			{
 				if (map[y][x] != '1')
 				{
@@ -48,25 +49,26 @@ void	wall_check(char **map, t_conf *conf)
 		{
 			if (map[y][0] != '1' || map[y][conf->map.width - 1] != '1')
 			{
-					map = ft_arrayfree(map);
-					printf("wall is not closed");
-					exit(0);
+				map = ft_arrayfree(map);
+				printf("wall is not closed");
+				exit(0);
 			}
-		} 
+		}
 	}
 }
 
+//delete conf
 void	invalid_char_check(char c, t_conf *conf)
 {
 	(void)conf;
-	if(ft_strchr(VALID_CHAR, c) == NULL)
+	if (ft_strchr(VALID_CHAR, c) == NULL)
 	{
 		ft_putstr_fd("bad char", 2);
 		exit(EXIT_SUCCESS);
 	}
 }
 
-void	inmap_char_count(char c,  t_conf *conf)
+void	inmap_char_count(char c, t_conf *conf)
 {
 	if (c == 'C')
 		conf->map.n_collectibles++;
@@ -78,7 +80,8 @@ void	inmap_char_count(char c,  t_conf *conf)
 
 void	n_char_check(char **map, t_conf *conf)
 {
-	if (!conf->map.n_exit || conf->map.n_players != 1 || !conf->map.n_collectibles)
+	if (!conf->map.n_exit || conf->map.n_players != 1
+		|| !conf->map.n_collectibles)
 	{
 		map = ft_arrayfree(map);
 		printf("You need to have one P, some E, some C\n");
