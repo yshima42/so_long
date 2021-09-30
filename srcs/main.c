@@ -1,6 +1,5 @@
 #include "../includes/so_long.h"
 
-
 /* void    destructor_leaks(void)__attribute__((destructor));
 
 void    destructor_leaks(void)
@@ -19,7 +18,7 @@ void	map_check(char **map, t_conf *conf)
 
 char	**map_set(char *mapfile, t_conf *conf)
 {
-	int	fd;
+	int		fd;
 	t_list	*buf;
 	char	**map;
 
@@ -30,7 +29,7 @@ char	**map_set(char *mapfile, t_conf *conf)
 	return (map);
 }
 
-void player_pos_check(char **map, t_conf *conf)
+void	player_pos_check(char **map, t_conf *conf)
 {
 	int		y;
 	int		x;
@@ -52,7 +51,8 @@ void player_pos_check(char **map, t_conf *conf)
 
 int	key_hook(int keycode, t_conf *conf)
 {
-	if (keycode == W_KEY || keycode == A_KEY || keycode == S_KEY || keycode == D_KEY)
+	if (keycode == W_KEY || keycode == A_KEY
+		|| keycode == S_KEY || keycode == D_KEY)
 		player_move(keycode, conf);
 	if (keycode == ESC_KEY)
 	{
@@ -64,10 +64,10 @@ int	key_hook(int keycode, t_conf *conf)
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_conf	conf;
-	
+
 	args_check(ac, av);
 	initialize_conf(&conf);
 	conf.map.map = map_set(av[1], &conf);
@@ -75,7 +75,8 @@ int main(int ac, char **av)
 	player_pos_check(conf.map.map, &conf);
 	conf.mlx = mlx_init();
 	chip_set(&conf);
- 	conf.win = mlx_new_window(conf.mlx, SCREAN_SIZE * CHIP_SIZE, SCREAN_SIZE * CHIP_SIZE, "so_long");
+	conf.win = mlx_new_window(conf.mlx, SCREAN_SIZE * CHIP_SIZE,
+			SCREAN_SIZE * CHIP_SIZE, "so_long");
 	mlx_key_hook(conf.win, key_hook, &conf);
 	mlx_loop(conf.mlx);
 }
