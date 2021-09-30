@@ -1,9 +1,10 @@
 #include "../includes/so_long.h"
 
-void	array_loop(char **map, t_conf *conf, void f(char c, t_conf *conf))
+void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf))
 {
 	size_t	x;
 	size_t	y;
+    char    *output;
 
 	y = -1;
 	while (map[++y])
@@ -11,7 +12,9 @@ void	array_loop(char **map, t_conf *conf, void f(char c, t_conf *conf))
 		x = -1;
 		while (map[y][++x])
 		{
-			f(map[y][x], conf);
+			output = f(map[y][x], conf);
+            if (output)
+                maperror_output(map, output);
 		}
 	}
 }
@@ -29,7 +32,6 @@ int	ft_open_readfile(char *readfile)
 	return (fd);
 }
 
-// think if you need to return char** or int
 char	**lst_to_array(t_list *buf, size_t height, char **map)
 {
 	t_list	*t_buf;

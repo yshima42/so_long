@@ -55,10 +55,7 @@ int	key_hook(int keycode, t_conf *conf)
 		|| keycode == S_KEY || keycode == D_KEY)
 		player_move(keycode, conf);
 	if (keycode == ESC_KEY)
-	{
-		free_all_conf(conf);
-		exit(0);
-	}
+		free_all_exit(conf);
 	player_pos_check(conf->map.map, conf);
 	array_to_screan(conf->map.map, conf);
 	return (0);
@@ -78,5 +75,6 @@ int	main(int ac, char **av)
 	conf.win = mlx_new_window(conf.mlx, SCREAN_SIZE * CHIP_SIZE,
 			SCREAN_SIZE * CHIP_SIZE, "so_long");
 	mlx_key_hook(conf.win, key_hook, &conf);
+	mlx_hook(conf.win, 33, 1L << 17, free_all_exit, &conf);
 	mlx_loop(conf.mlx);
 }

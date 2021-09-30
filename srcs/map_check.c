@@ -14,11 +14,7 @@ void	rectangular_check(char **map, t_conf *conf)
 			if (y == 0)
 				conf->map.width = ft_strlen(map[y]);
 			if (conf->map.width != ft_strlen(map[y]))
-			{
-				printf("Map is not rectangular\n");
-				map = ft_arrayfree(map);
-				exit(EXIT_SUCCESS);
-			}
+				maperror_output(map, "Not rectangular or No first line in the file\n");
 		}
 	}
 }
@@ -36,39 +32,24 @@ void	wall_check(char **map, t_conf *conf)
 		{
 			x = -1;
 			while (map[y][++x])
-			{
 				if (map[y][x] != '1')
-				{
-					map = ft_arrayfree(map);
-					printf("wall is not closed");
-					exit(0);
-				}
-			}
+					maperror_output(map, "Wall is not closed\n");
 		}
 		else
-		{
 			if (map[y][0] != '1' || map[y][conf->map.width - 1] != '1')
-			{
-				map = ft_arrayfree(map);
-				printf("wall is not closed");
-				exit(0);
-			}
-		}
+                maperror_output(map, "Wall is not closed\n");
 	}
 }
 
-//delete conf
-void	invalid_char_check(char c, t_conf *conf)
+char	*invalid_char_check(char c, t_conf *conf)
 {
 	(void)conf;
 	if (ft_strchr(VALID_CHAR, c) == NULL)
-	{
-		ft_putstr_fd("bad char", 2);
-		exit(EXIT_SUCCESS);
-	}
+		return("Invalid charactor in the file\n");
+    return (NULL);
 }
 
-void	inmap_char_count(char c, t_conf *conf)
+char	*inmap_char_count(char c, t_conf *conf)
 {
 	if (c == 'C')
 		conf->map.n_collectibles++;
@@ -76,15 +57,12 @@ void	inmap_char_count(char c, t_conf *conf)
 		conf->map.n_exit++;
 	if (c == 'P')
 		conf->map.n_players++;
+    return (NULL);
 }
 
 void	n_char_check(char **map, t_conf *conf)
 {
 	if (!conf->map.n_exit || conf->map.n_players != 1
 		|| !conf->map.n_collectibles)
-	{
-		map = ft_arrayfree(map);
-		printf("You need to have one P, some E, some C\n");
-		exit(0);
-	}
+        maperror_output(map, "Need one P, some E, some C in the file\n");
 }

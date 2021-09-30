@@ -19,12 +19,12 @@ void	args_check(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		printf("You need two args: ./so_long xxx.bar");
-		exit (0);
+		ft_putstr_fd("Error(Args): ./so_long xxx.bar", 2);
+		exit (EXIT_SUCCESS);
 	}
 	if (extension_check(av[1]) == -1)
 	{
-		printf("You need to have xxx.bar file");
-		exit (0);
+		ft_putstr_fd("Error(Args): ./so_long xxx.bar", 2);
+		exit (EXIT_SUCCESS);
 	}
 }

@@ -15,7 +15,7 @@ char	**ft_arrayfree(char **tab)
 	return (NULL);
 }
 
-void	free_all_conf(t_conf *conf)
+int	free_all_exit(t_conf *conf)
 {
 	if (conf->map.map)
 		conf->map.map = ft_arrayfree(conf->map.map);
@@ -37,4 +37,6 @@ void	free_all_conf(t_conf *conf)
 		free(conf->mlx);
 		conf->mlx = NULL;
 	}
+    exit(EXIT_SUCCESS);
+    return (0);
 }

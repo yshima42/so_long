@@ -70,7 +70,7 @@ typedef struct s_conf
 # define D_KEY 100
 
 //utils.c
-void	array_loop(char **map, t_conf *conf, void f(char c, t_conf *conf));
+void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf));
 int	    ft_open_readfile(char *readfile);
 char	**lst_to_array(t_list *buf, size_t height, char **map);
 size_t	file_to_lst(int fd, t_list **buf);
@@ -78,13 +78,13 @@ void    ft_swap(char *a, char *b);
 
 //free.c
 char	**ft_arrayfree(char **tab);
-void	free_all_conf(t_conf *conf);
+int	free_all_exit(t_conf *conf);
 
 //map_check.c
 void    rectangular_check(char **map, t_conf *conf);
 void    wall_check(char **map, t_conf *conf);
-void	invalid_char_check(char c, t_conf *conf);
-void	inmap_char_count(char c,  t_conf *conf);
+char	*invalid_char_check(char c, t_conf *conf);
+char	*inmap_char_count(char c,  t_conf *conf);
 void	n_char_check(char **map, t_conf *conf);
 
 //args_check.c
@@ -105,8 +105,11 @@ void	game_complete(char *a, char *b, t_conf *conf);
 void	collect_item(char *a, char *b, t_conf *conf);
 int next_pos_check(char next_pos_c, char check_c);
 
+//error_output.c
+void maperror_output(char **map, char *output);
+void wall_no_rectangular(char **map, t_conf *conf);
+
 //delete later
 void    destructor_leaks(void);
-
 
 #endif

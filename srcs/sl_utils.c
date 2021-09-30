@@ -15,7 +15,7 @@ void	*chr_to_imgptr(char c, t_conf *conf)
 	else
 	{
 		ft_putstr_fd("never come here", 2);
-		exit(0); // it shouldn't come here
+		exit(EXIT_SUCCESS); // it shouldn't come here
 	}
 }
 

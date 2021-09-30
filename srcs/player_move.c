@@ -54,11 +54,10 @@ void	game_complete(char *a, char *b, t_conf *conf)
 	{
 		*b = *a;
 		*a = '0';
-		printf("Game Clear!!\n");
+		ft_putstr_fd("Game Clear!!\n", 1);
 		//mlx_loop_hook(conf->mlx, complete_animation, conf);
 		//conf->map.map = ft_arrayfree(conf->map.map);
-		free_all_conf(conf);
-		exit(0); //add complete effect and free
+		free_all_exit(conf);
 	}
 }
 
