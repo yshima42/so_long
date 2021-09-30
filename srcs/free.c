@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 16:09:27 by yshimazu          #+#    #+#             */
+/*   Updated: 2021/09/30 16:10:07 by yshimazu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 char	**ft_arrayfree(char **tab)
@@ -37,6 +49,6 @@ int	free_all_exit(t_conf *conf)
 		free(conf->mlx);
 		conf->mlx = NULL;
 	}
-    exit(EXIT_SUCCESS);
-    return (0);
+	exit (EXIT_SUCCESS);
+	return (0);
 }

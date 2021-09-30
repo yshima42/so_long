@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 16:13:56 by yshimazu          #+#    #+#             */
+/*   Updated: 2021/09/30 16:19:43 by yshimazu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf))
 {
 	size_t	x;
 	size_t	y;
-    char    *output;
+	char	*output;
 
 	y = -1;
 	while (map[++y])
@@ -13,8 +25,8 @@ void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf))
 		while (map[y][++x])
 		{
 			output = f(map[y][x], conf);
-            if (output)
-                maperror_output(map, output);
+			if (output)
+				maperror_output(map, output);
 		}
 	}
 }
@@ -38,20 +50,20 @@ char	**lst_to_array(t_list *buf, size_t height, char **map)
 	size_t	i;
 
 	if (height < INT32_MAX)
-    {
-        t_buf = buf;
-        map = (char **)malloc(sizeof(char *) * height + 1);
-        if (!map)
-            exit(EXIT_FAILURE);//need perror??
-        i = 0;
-        while (t_buf)
-        {
-            map[i] = ft_strdup(t_buf->content);
-            t_buf = t_buf->next;
-            i++;
-        }
-        map[i] = NULL;
-    }
+	{
+		t_buf = buf;
+		map = (char **)malloc(sizeof(char *) * height + 1);
+		if (!map)
+			exit(EXIT_FAILURE);//need perror??
+		i = 0;
+		while (t_buf)
+		{
+			map[i] = ft_strdup(t_buf->content);
+			t_buf = t_buf->next;
+			i++;
+		}
+		map[i] = NULL;
+	}
 	ft_lstclear(&buf, free);
 	return (map);
 }

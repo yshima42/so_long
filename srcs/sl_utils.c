@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sl_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 16:13:50 by yshimazu          #+#    #+#             */
+/*   Updated: 2021/09/30 16:16:40 by yshimazu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	*chr_to_imgptr(char c, t_conf *conf)
@@ -15,18 +27,18 @@ void	*chr_to_imgptr(char c, t_conf *conf)
 	else
 	{
 		ft_putstr_fd("You cannot come here!!", 2);
-        free_all_exit(conf);
-        return(NULL);
+		free_all_exit(conf);
+		return (NULL);
 	}
 }
 
 void	array_to_screan(char **map, t_conf *conf)
 {
-	void    *img_ptr;
-	int	    y;
-	int	    x;
-	int	    scroll_y;
-	int	    scroll_x;
+	void	*img_ptr;
+	int		y;
+	int		x;
+	int		scroll_y;
+	int		scroll_x;
 
 	mlx_clear_window(conf->mlx, conf->win);
 	scroll_y = (conf->player.pos_y / SCREAN_SIZE) * SCREAN_SIZE;
@@ -72,9 +84,9 @@ void	step_counter(t_conf *conf)
 {
 	conf->player.n_steps++;
 	printf("Number of steps: %ld\n", conf->player.n_steps);
-    if (conf->player.n_steps > SIZE_MAX)
-    {
-        ft_putstr_fd("Game Over: You walked way too much!!\n", 2);
-        free_all_exit(conf);
-    }
+	if (conf->player.n_steps > SIZE_MAX)
+	{
+		ft_putstr_fd("Game Over: You walked way too much!!\n", 2);
+		free_all_exit(conf);
+	}
 }

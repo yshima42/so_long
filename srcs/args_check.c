@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   args_check.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/30 16:09:20 by yshimazu          #+#    #+#             */
+/*   Updated: 2021/09/30 16:09:20 by yshimazu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 int	extension_check(char *filename)
@@ -17,7 +29,7 @@ int	extension_check(char *filename)
 
 void	args_check(int ac, char **av)
 {
-	if (ac != 2  || extension_check(av[1]) == -1)
+	if (ac != 2 || extension_check(av[1]) == -1)
 	{
 		ft_putstr_fd("Error(Args): ./so_long xxx.bar", 2);
 		exit (EXIT_SUCCESS);
