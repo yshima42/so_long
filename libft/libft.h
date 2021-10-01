@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:16:10 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/09/25 15:48:16 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/01 22:01:18 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+# include <stdio.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 # define SUCCESS 1
 # define END_OF_FILE 0
@@ -87,6 +87,5 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_gnl	*ft_gnlnew(int fd, char *c);
 char	*ft_strndup(const char *src, size_t n);
 char	*get_next_line(int fd);
-
 
 #endif

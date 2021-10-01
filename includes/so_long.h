@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 21:56:57 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/10/01 21:57:57 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/01 21:59:23 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_conf
 
 # define IMG_EMPTY 			"images/empty.xpm"
 # define IMG_WALL 			"images/wall.xpm"
-# define IMG_COLLECTIBLE	"images/bitcoin_colored.xpm"
+# define IMG_COLLECTIBLE	"images/coin_colored.xpm"
 # define IMG_EXIT 			"images/exit.xpm"
 # define IMG_PLAYER 		"images/player1.xpm"
 # define IMG_PLAYER_2		"images/player2.xpm"

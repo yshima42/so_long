@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:15:21 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/08/11 12:15:21 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/01 22:02:18 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	*free_all(char **dest, size_t i)
 	return (NULL);
 }
 
-static char *char_malloc(char const *src, char c, size_t i)
+static char	*char_malloc(char const *src, char c, size_t i)
 {
 	size_t	len;
 	char	*ptr;
