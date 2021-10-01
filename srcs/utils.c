@@ -18,16 +18,18 @@ void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf))
 	size_t	y;
 	char	*error_message;
 
-	y = -1;
-	while (map[++y])
+	y = 0;
+	while (map[y])
 	{
-		x = -1;
+		x = 0;
 		while (map[y][++x])
 		{
 			error_message = f(map[y][x], conf);
 			if (error_message)
 				maperror_output(map, error_message);
+			x++;
 		}
+		y++;
 	}
 }
 

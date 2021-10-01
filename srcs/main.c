@@ -41,21 +41,23 @@ char	**map_set(char *mapfile, t_conf *conf)
 
 void	player_pos_check(char **map, t_conf *conf)
 {
-	int		y;
-	int		x;
+	size_t		y;
+	size_t		x;
 
-	y = -1;
-	while (map[++y])
+	y = 0;
+	while (map[y])
 	{
-		x = -1;
-		while (map[y][++x])
+		x = 0;
+		while (map[y][x])
 		{
 			if (map[y][x] == 'P')
 			{
 				conf->player.pos_y = y;
 				conf->player.pos_x = x;
 			}
+			x++;
 		}
+		y++;
 	}
 }
 

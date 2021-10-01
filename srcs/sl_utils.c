@@ -35,24 +35,26 @@ void	*chr_to_imgptr(char c, t_conf *conf)
 void	array_to_screan(char **map, t_conf *conf)
 {
 	void	*img_ptr;
-	int		y;
-	int		x;
-	int		scroll_y;
-	int		scroll_x;
+	size_t	y;
+	size_t	x;
+	size_t	scroll_y;
+	size_t	scroll_x;
 
 	mlx_clear_window(conf->mlx, conf->win);
 	scroll_y = (conf->player.pos_y / SCREAN_SIZE) * SCREAN_SIZE;
 	scroll_x = (conf->player.pos_x / SCREAN_SIZE) * SCREAN_SIZE;
-	y = -1;
-	while (map[++y + scroll_y])
+	y = 0;
+	while (map[y + scroll_y])
 	{
-		x = -1;
-		while (map[y + scroll_y][++x + scroll_x]) // error handring player only be one
+		x = 0;
+		while (map[y + scroll_y][x + scroll_x]) // error handring player only be one
 		{
 			img_ptr = chr_to_imgptr(map[y + scroll_y][x + scroll_x], conf);
 			mlx_put_image_to_window(conf->mlx, conf->win, img_ptr,
 				CHIP_SIZE * x, CHIP_SIZE * y);
+			x++;
 		}
+		y++;
 	}
 }
 

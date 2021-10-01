@@ -14,13 +14,13 @@
 
 void	rectangular_check(char **map, t_conf *conf)
 {
-	int	x;
-	int	y;
+	size_t	x;
+	size_t	y;
 
-	y = -1;
-	while (map[++y])
+	y = 0;
+	while (map[y])
 	{
-		x = -1;
+		x = 0;
 		while (map[y][++x])
 		{
 			if (y == 0)
@@ -30,7 +30,9 @@ void	rectangular_check(char **map, t_conf *conf)
 			if (conf->map.width != ft_strlen(map[y]))
 				maperror_output(map,
 					"Not rectangular or No first line in the file\n");
+			x++;
 		}
+		y++;
 	}
 }
 
@@ -40,19 +42,23 @@ void	wall_check(char **map, t_conf *conf)
 	size_t	x;
 	size_t	y;
 
-	y = -1;
-	while (map[++y])
+	y = 0;
+	while (map[y])
 	{
+		x = 0;
 		if (y == 0 || y == conf->map.height - 1)
 		{
-			x = -1;
-			while (map[y][++x])
+			while (map[y][x])
+			{
 				if (map[y][x] != '1')
 					maperror_output(map, "Wall is not closed\n");
+			x++;
+			}
 		}
 		else
 			if (map[y][0] != '1' || map[y][conf->map.width - 1] != '1')
 				maperror_output(map, "Wall is not closed\n");
+		y++;
 	}
 }
 
