@@ -44,22 +44,6 @@ void	collect_item(char *a, char *b, t_conf *conf)
 	conf->player.collectibles++;
 }
 
-/* int complete_animation(t_conf *conf)
-{
-	int count;
-	void *img_ptr;
-
-	count = 0;
-	ft_putchar_fd('a', 2);
-	while (count < 1000)
-	{
-		count++;
-		img_ptr = chr_to_imgptr(conf->map.map[conf->player.pos_y][conf->player.pos_x], conf);
-		mlx_put_image_to_window(conf->mlx, conf->win, img_ptr, CHIP_SIZE * 1, CHIP_SIZE * 1);
-	}
-	return (0);
-} */
-
 void	game_complete(char *a, char *b, t_conf *conf)
 {	
 	if (conf->player.collectibles == conf->map.n_collectibles)
@@ -67,8 +51,6 @@ void	game_complete(char *a, char *b, t_conf *conf)
 		*b = *a;
 		*a = '0';
 		ft_putstr_fd("Game Clear!!\n", 1);
-		//mlx_loop_hook(conf->mlx, complete_animation, conf);
-		//conf->map.map = ft_arrayfree(conf->map.map);
 		free_all_exit(conf);
 	}
 }

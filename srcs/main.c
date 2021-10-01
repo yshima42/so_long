@@ -12,12 +12,27 @@
 
 #include "../includes/so_long.h"
 
-/* void    destructor_leaks(void)__attribute__((destructor));
-
-void    destructor_leaks(void)
+void	initialize_conf(t_conf *conf)
 {
-    system("leaks so_long | grep 'leaks for'");
-} */
+	conf->mlx = NULL;
+	conf->win = NULL;
+	conf->map.map = NULL;
+	conf->map.width = 0;
+	conf->map.height = 0;
+	conf->map.n_collectibles = 0;
+	conf->map.n_players = 0;
+	conf->map.n_exit = 0;
+	conf->images.empty = NULL;
+	conf->images.wall = NULL;
+	conf->images.collectible = NULL;
+	conf->images.exit = NULL;
+	conf->images.player = NULL;
+	conf->images.size = CHIP_SIZE;
+	conf->player.pos_y = 0;
+	conf->player.pos_x = 0;
+	conf->player.n_steps = 0;
+	conf->player.collectibles = 0;
+}
 
 void	map_check(char **map, t_conf *conf)
 {
@@ -35,7 +50,8 @@ char	**map_set(char *mapfile, t_conf *conf)
 
 	buf = NULL;
 	fd = ft_open_readfile(mapfile);
-	conf->map.height = file_to_lst(fd, &buf);
+	conf->map.height = fd_to_lst(fd, &buf);
+	size_check(conf);
 	return (lst_to_array(buf, conf->map.height));
 }
 
@@ -59,38 +75,6 @@ void	player_pos_check(char **map, t_conf *conf)
 		}
 		y++;
 	}
-}
-
-int	key_hook(int keycode, t_conf *conf)
-{
-	if (keycode == W_KEY || keycode == A_KEY
-		|| keycode == S_KEY || keycode == D_KEY)
-		player_move(keycode, conf);
-	if (keycode == ESC_KEY)
-		free_all_exit(conf);
-	player_pos_check(conf->map.map, conf);
-	array_to_screan(conf->map.map, conf);
-	return (0);
-}
-
-void	desplay_mlx(t_conf *conf)
-{
-	conf->mlx = mlx_init();
-	if (!conf->mlx)
-		free_all_exit(conf);
-	chip_set(conf);
-	conf->win = mlx_new_window(conf->mlx, SCREAN_SIZE * CHIP_SIZE,
-			SCREAN_SIZE * CHIP_SIZE, "so_long");
-	if (!conf->mlx)
-		free_all_exit(conf);
-	array_to_screan(conf->map.map, conf);
-}
-
-void	hook_loop_mlx(t_conf *conf)
-{
-	mlx_hook(conf->win, 2, 1L << 0, key_hook, conf);
-	mlx_hook(conf->win, 33, 1L << 17, free_all_exit, conf);
-	mlx_loop(conf->mlx);
 }
 
 int	main(int ac, char **av)

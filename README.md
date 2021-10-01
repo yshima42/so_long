@@ -1,16 +1,16 @@
 # remaining tasks
 - scroll ok
-- free ? check the error statement
-- map error at the same time
-- gnl error handling
-- libft error handling
-- size_t and int : over flow
+- free ? check the error statement ok
+- map error at the same time ok
+- gnl error handling ok
+- libft error handling ok
+- size_t and int : over flow ok
 - norminette
 - bonus
     - animation
-- mlx null check
-- error \n check
-- NULL ume
+- mlx null check ok
+- error \n check ok
+- NULL ume ok
 
 - exit situation
     - arg
@@ -21,7 +21,7 @@
 - question
     - when malloc failure, need to show some comments? yaru
     - when gnl would be a problem? yaranai
-    - valgrind error 
+    - valgrind error ok
     - map error at the same time ok
     - what happen when you walk too much (size_t < ) ok
     - no 0 in the map OK? ok

@@ -39,10 +39,7 @@ int	ft_open_readfile(char *readfile)
 
 	fd = open(readfile, O_RDONLY);
 	if (fd == -1)
-	{
-		perror("open");
-		exit(EXIT_FAILURE);
-	}
+		perror_exit("Open");
 	return (fd);
 }
 
@@ -52,27 +49,23 @@ char	**lst_to_array(t_list *buf, size_t height)
 	size_t	i;
 	char **map;
 
-	// check again
-	if (height < INT32_MAX)
+	t_buf = buf;
+	map = (char **)malloc(sizeof(char *) * (height + 1));
+	if (!map)
+		perror_exit("malloc");
+	i = 0;
+	while (t_buf)
 	{
-		t_buf = buf;
-		map = (char **)malloc(sizeof(char *) * (height + 1));
-		if (!map)
-			perror_exit("Error\nmalloc: ");
-		i = 0;
-		while (t_buf)
-		{
-			map[i] = ft_strdup(t_buf->content);
-			t_buf = t_buf->next;
-			i++;
-		}
-		map[i] = NULL;
+		map[i] = ft_strdup(t_buf->content);
+		t_buf = t_buf->next;
+		i++;
 	}
+	map[i] = NULL;
 	ft_lstclear(&buf, free);
 	return (map);
 }
 
-size_t	file_to_lst(int fd, t_list **buf)
+size_t	fd_to_lst(int fd, t_list **buf)
 {
 	char	*line;
 	size_t	l_count;

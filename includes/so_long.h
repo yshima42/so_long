@@ -46,9 +46,9 @@ typedef struct s_conf
 # define VALID_CHAR 		"01CEP"
 
 # define IMG_EMPTY 			"images/empty.xpm"
-# define IMG_WALL 			"images/wall8.xpm"
+# define IMG_WALL 			"images/wall.xpm"
 # define IMG_COLLECTIBLE	"images/bitcoin_colored.xpm"
-# define IMG_EXIT 			"images/exit13.xpm"
+# define IMG_EXIT 			"images/exit.xpm"
 # define IMG_PLAYER 		"images/player1.xpm"
 # define IMG_PLAYER_2		"images/player2.xpm"
 
@@ -65,7 +65,7 @@ typedef struct s_conf
 void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf));
 int	    ft_open_readfile(char *readfile);
 char	**lst_to_array(t_list *buf, size_t height);
-size_t	file_to_lst(int fd, t_list **buf);
+size_t	fd_to_lst(int fd, t_list **buf);
 void    ft_swap(char *a, char *b);
 
 //free.c
@@ -79,16 +79,11 @@ char	*invalid_char_check(char c, t_conf *conf);
 char	*inmap_char_count(char c,  t_conf *conf);
 void	n_char_check(char **map, t_conf *conf);
 
-//args_check.c
-int	extension_check(char *filename);
-void	args_check(int ac, char **av);
-
 //sl_utils.c
 void	*chr_to_imgptr(char c, t_conf *conf);
-void	array_to_screan(char **map, t_conf *conf);
 void	chip_set(t_conf *conf);
-void	initialize_conf(t_conf *conf);
 void    step_counter(t_conf *conf);
+void	size_check(t_conf *conf);
 
 //player_move.c
 void    player_move(int keycode, t_conf *conf);
@@ -100,8 +95,17 @@ int     next_pos_check(char next_pos_c, char check_c);
 //error_output.c
 void 	map_error_output(char **map, char *output);
 void	perror_exit(char *error_message);
+void	error_mlx(t_conf *conf);
+int		extension_check(char *filename);
+void	args_check(int ac, char **av);
 
-//delete later
-void    destructor_leaks(void);
+//mlx_utils.c
+void	array_to_screan(char **map, t_conf *conf);
+int		key_hook(int keycode, t_conf *conf);
+void	hook_loop_mlx(t_conf *conf);
+void	desplay_mlx(t_conf *conf);
+
+//main.c
+void	player_pos_check(char **map, t_conf *conf);
 
 #endif
