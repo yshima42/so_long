@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 16:13:56 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/09/30 16:19:43 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/01 22:04:47 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**lst_to_array(t_list *buf, size_t height)
 {
 	t_list	*t_buf;
 	size_t	i;
-	char **map;
+	char	**map;
 
 	t_buf = buf;
 	map = (char **)malloc(sizeof(char *) * (height + 1));

@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 16:10:30 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/09/30 16:13:39 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/01 22:05:27 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	wall_check(char **map, t_conf *conf)
 			{
 				if (map[y][x] != '1')
 					map_error_output(map, "Not closed by Wall\n");
-			x++;
+				x++;
 			}
 		}
 		else if (map[y][0] != '1' || map[y][conf->map.width - 1] != '1')
