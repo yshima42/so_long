@@ -1,20 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/01 21:56:57 by yshimazu          #+#    #+#             */
+/*   Updated: 2021/10/01 21:57:57 by yshimazu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include <stdint.h>
+# include <stdint.h>
 
-#include "../libft/libft.h"
-#include "../mlx_linux/mlx.h"
+# include "../libft/libft.h"
+# include "../mlx_linux/mlx.h"
 
-typedef	struct s_player
+typedef struct s_player
 {
-	int	pos_y;
-	int	pos_x;
+	int		pos_y;
+	int		pos_x;
 	size_t	n_steps;
 	size_t	collectibles;
-} t_player;
+}	t_player;
 
-typedef	struct s_map
+typedef struct s_map
 {
 	char	**map;
 	size_t	width;
@@ -36,7 +48,7 @@ typedef struct s_images
 
 typedef struct s_conf
 {
-    void		*mlx;
+	void		*mlx;
 	void		*win;
 	t_map		map;
 	t_images	images;
@@ -63,37 +75,37 @@ typedef struct s_conf
 
 //utils.c
 void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf));
-int	    ft_open_readfile(char *readfile);
+int		ft_open_readfile(char *readfile);
 char	**lst_to_array(t_list *buf, size_t height);
 size_t	fd_to_lst(int fd, t_list **buf);
-void    ft_swap(char *a, char *b);
+void	ft_swap(char *a, char *b);
 
 //free.c
 char	**ft_arrayfree(char **tab);
-int	free_all_exit(t_conf *conf);
+int		free_all_exit(t_conf *conf);
 
 //map_check.c
-void    rectangular_check(char **map, t_conf *conf);
-void    wall_check(char **map, t_conf *conf);
+void	rectangular_check(char **map, t_conf *conf);
+void	wall_check(char **map, t_conf *conf);
 char	*invalid_char_check(char c, t_conf *conf);
-char	*inmap_char_count(char c,  t_conf *conf);
+char	*inmap_char_count(char c, t_conf *conf);
 void	n_char_check(char **map, t_conf *conf);
 
 //sl_utils.c
 void	*chr_to_imgptr(char c, t_conf *conf);
 void	chip_set(t_conf *conf);
-void    step_counter(t_conf *conf);
+void	step_counter(t_conf *conf);
 void	size_check(t_conf *conf);
 
 //player_move.c
-void    player_move(int keycode, t_conf *conf);
+void	player_move(int keycode, t_conf *conf);
 void	step_to_next(char *current_pos, char *next_pos, t_conf *conf);
 void	game_complete(char *a, char *b, t_conf *conf);
 void	collect_item(char *a, char *b, t_conf *conf);
-int     next_pos_check(char next_pos_c, char check_c);
+int		next_pos_check(char next_pos_c, char check_c);
 
 //error_output.c
-void 	map_error_output(char **map, char *output);
+void	map_error_output(char **map, char *output);
 void	perror_exit(char *error_message);
 void	error_mlx(t_conf *conf);
 int		extension_check(char *filename);
