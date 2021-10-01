@@ -26,9 +26,9 @@ void	rectangular_check(char **map, t_conf *conf)
 			if (y == 0)
 				conf->map.width = ft_strlen(map[y]);
 			if (conf->map.width > INT32_MAX)
-				maperror_output(map, "Map is too big\n");
+				map_error_output(map, "Map is too big\n");
 			if (conf->map.width != ft_strlen(map[y]))
-				maperror_output(map,
+				map_error_output(map,
 					"Not rectangular or No first line in the file\n");
 			x++;
 		}
@@ -51,13 +51,13 @@ void	wall_check(char **map, t_conf *conf)
 			while (map[y][x])
 			{
 				if (map[y][x] != '1')
-					maperror_output(map, "Wall is not closed\n");
+					map_error_output(map, "Wall is not closed\n");
 			x++;
 			}
 		}
 		else
 			if (map[y][0] != '1' || map[y][conf->map.width - 1] != '1')
-				maperror_output(map, "Wall is not closed\n");
+				map_error_output(map, "Wall is not closed\n");
 		y++;
 	}
 }
@@ -89,6 +89,6 @@ void	n_char_check(char **map, t_conf *conf)
 {
 	if (!conf->map.n_exit || conf->map.n_players != 1
 		|| !conf->map.n_collectibles)
-		maperror_output(map,
+		map_error_output(map,
 			"Need one P, more than one E, more than one C in the file\n");
 }

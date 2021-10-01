@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void	maperror_output(char **map, char *output)
+void	map_error_output(char **map, char *output)
 {
 	map = ft_arrayfree(map);
 	ft_putstr_fd("Error\nMap: ", 2);

@@ -98,7 +98,7 @@ void	collect_item(char *a, char *b, t_conf *conf);
 int     next_pos_check(char next_pos_c, char check_c);
 
 //error_output.c
-void 	maperror_output(char **map, char *output);
+void 	map_error_output(char **map, char *output);
 void	perror_exit(char *error_message);
 
 //delete later

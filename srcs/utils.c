@@ -26,7 +26,7 @@ void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf))
 		{
 			error_message = f(map[y][x], conf);
 			if (error_message)
-				maperror_output(map, error_message);
+				map_error_output(map, error_message);
 			x++;
 		}
 		y++;
