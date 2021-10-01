@@ -64,7 +64,7 @@ typedef struct s_conf
 //utils.c
 void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf));
 int	    ft_open_readfile(char *readfile);
-char	**lst_to_array(t_list *buf, size_t height, char **map);
+char	**lst_to_array(t_list *buf, size_t height);
 size_t	file_to_lst(int fd, t_list **buf);
 void    ft_swap(char *a, char *b);
 

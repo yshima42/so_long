@@ -21,7 +21,7 @@ void	rectangular_check(char **map, t_conf *conf)
 	while (map[y])
 	{
 		x = 0;
-		while (map[y][++x])
+		while (map[y][x])
 		{
 			if (y == 0)
 				conf->map.width = ft_strlen(map[y]);

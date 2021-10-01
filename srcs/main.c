@@ -36,7 +36,7 @@ char	**map_set(char *mapfile, t_conf *conf)
 	buf = NULL;
 	fd = ft_open_readfile(mapfile);
 	conf->map.height = file_to_lst(fd, &buf);
-	return (lst_to_array(buf, conf->map.height, conf->map.map));
+	return (lst_to_array(buf, conf->map.height));
 }
 
 void	player_pos_check(char **map, t_conf *conf)

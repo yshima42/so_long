@@ -84,6 +84,7 @@ void	chip_set(t_conf *conf)
 
 void	initialize_conf(t_conf *conf)
 {
+	//ayashii??
 	conf->mlx = NULL;
 	conf->win = NULL;
 	conf->map.map = NULL;

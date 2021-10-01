@@ -22,7 +22,7 @@ void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf))
 	while (map[y])
 	{
 		x = 0;
-		while (map[y][++x])
+		while (map[y][x])
 		{
 			error_message = f(map[y][x], conf);
 			if (error_message)
@@ -46,15 +46,17 @@ int	ft_open_readfile(char *readfile)
 	return (fd);
 }
 
-char	**lst_to_array(t_list *buf, size_t height, char **map)
+char	**lst_to_array(t_list *buf, size_t height)
 {
 	t_list	*t_buf;
 	size_t	i;
+	char **map;
 
+	// check again
 	if (height < INT32_MAX)
 	{
 		t_buf = buf;
-		map = (char **)malloc(sizeof(char *) * height + 1);
+		map = (char **)malloc(sizeof(char *) * (height + 1));
 		if (!map)
 			perror_exit("Error\nmalloc: ");
 		i = 0;
