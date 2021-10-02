@@ -99,6 +99,13 @@ typedef struct s_conf
 # define S_KEY 115
 # define D_KEY 100
 
+// is it OK?????
+# define ABS(n) (n * ((n < 0) ? -1 : 1 ))
+
+//initialize_bonus.c
+void	initialize_conf(t_conf *conf);
+void	initialize_conf2(t_conf *conf);
+
 //utils_bonus.c
 void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf));
 int		ft_open_readfile(char *readfile);
@@ -120,6 +127,7 @@ void	n_char_check(char **map, t_conf *conf);
 //sl_utils_bonus.c
 void	*chr_to_imgptr(char c, t_conf *conf);
 void	chip_set(t_conf *conf);
+void	chip_set2(t_conf *conf);
 void	step_counter(t_conf *conf);
 void	size_check(t_conf *conf);
 
@@ -131,12 +139,21 @@ void	game_complete(char *a, char *b, t_conf *conf);
 void	collect_item(char *a, char *b, t_conf *conf);
 int		next_pos_check(char next_pos_c, char check_c);
 
+//player_action_bonus.c
+void	game_finish_animation(char *img1, char *img2, t_conf *conf);
+
+//enemy_bonus.c
+void	enemy_step_to_next(char *current_pos, char *next_pos, t_conf *conf);
+void	uni_move(int u_y, int u_x, t_conf *conf);
+void	enemy_move(int e_y, int e_x, t_conf *conf);
+
 //error_output_bonus.c
 void	map_error_output(char **map, char *output);
 void	perror_exit(char *error_message);
 void	error_mlx(t_conf *conf);
 int		extension_check(char *filename);
 void	args_check(int ac, char **av);
+void	error_check_mlx(void *v_ptr, t_conf *conf);
 
 //mlx_utils_bonus.c
 void	array_to_screan(char **map, t_conf *conf);
@@ -144,11 +161,14 @@ int		key_hook(int keycode, t_conf *conf);
 void	hook_loop_mlx(t_conf *conf);
 void	desplay_mlx(t_conf *conf);
 
+
+
 //animation_bonus.c
-void	animation_to_screan(char **map, t_conf *conf);
+//void	animation_to_screan(int pos_y, int pos_x, char **map, t_conf *conf);
+void	animation_to_screan(int pos_y, int pos_x, char **map, t_conf *conf);
 int		animation(t_conf *conf);
 
 //main_bonus.c
-void	char_pos_check(char **map, t_conf *conf);
+void	pos_check(char **map, t_conf *conf);
 
 #endif

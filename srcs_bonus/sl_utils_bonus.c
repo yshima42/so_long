@@ -58,6 +58,10 @@ void	chip_set(t_conf *conf)
 			&conf->images.size, &conf->images.size);
 	if (!conf->images.player)
 		error_mlx(conf);
+}
+
+void	chip_set2(t_conf *conf)
+{
 	conf->images.enemy = mlx_xpm_file_to_image(conf->mlx, IMG_ENEMY_1,
 			&conf->images.size, &conf->images.size);
 	if (!conf->images.enemy)

@@ -79,17 +79,13 @@ char	*inmap_char_count(char c, t_conf *conf)
 		conf->map.n_enemies++;
 	if (c == 'U')
 		conf->map.n_unis++;
-	//no need!?!?
-	if (conf->map.n_collectibles > SIZE_MAX || conf->map.n_exit > SIZE_MAX)
-		return ("Too many C, E, T, or U");
-	else
-		return (NULL);
+	return (NULL);
 }
 
 void	n_char_check(char **map, t_conf *conf)
 {
 	if (!conf->map.n_exit || conf->map.n_players != 1
-		|| !conf->map.n_collectibles || !conf->map.n_enemies || !conf->map.n_unis)
+		|| !conf->map.n_collectibles || conf->map.n_enemies != 1 || conf->map.n_unis != 1)
 		map_error_output(map,
-			"Need one P, more than one C, E, and U in the file\n");
+			"Need one P, E, and U, and more than one C in the file\n");
 }

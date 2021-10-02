@@ -33,6 +33,13 @@ void	error_mlx(t_conf *conf)
 	free_all_exit(conf);
 }
 
+void	error_check_mlx(void *v_ptr, t_conf *conf)
+{
+	if (!v_ptr)
+	ft_putstr_fd("Error\nSomething is wring in mlx function", 2);
+	free_all_exit(conf);
+}
+
 int	extension_check(char *filename)
 {
 	char	*dot_ptr;

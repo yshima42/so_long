@@ -12,34 +12,6 @@
 
 #include "../includes/so_long_bonus.h"
 
-void	initialize_conf(t_conf *conf)
-{
-	conf->mlx = NULL;
-	conf->win = NULL;
-	conf->map.map = NULL;
-	conf->map.width = 0;
-	conf->map.height = 0;
-	conf->map.n_collectibles = 0;
-	conf->map.n_players = 0;
-	conf->map.n_exit = 0;
-	conf->map.n_enemies = 0;
-	conf->map.n_unis = 0;
-	conf->images.empty = NULL;
-	conf->images.wall = NULL;
-	conf->images.collectible = NULL;
-	conf->images.exit = NULL;
-	conf->images.player = NULL;
-	conf->images.enemy = NULL;
-	conf->images.size = CHIP_SIZE;
-	conf->player.pos_y = 0;
-	conf->player.pos_x = 0;
-	conf->player.n_steps = 0;
-	conf->player.n_clicks = 0;
-	conf->enemy.pos_y = 0;
-	conf->enemy.pos_x = 0;
-	conf->player.collectibles = 0;
-}
-
 void	map_check(char **map, t_conf *conf)
 {
 	rectangular_check(map, conf);
@@ -61,7 +33,31 @@ char	**map_set(char *mapfile, t_conf *conf)
 	return (lst_to_array(buf, conf->map.height));
 }
 
-void	char_pos_check(char **map, t_conf *conf)
+void	char_pos_check(int x, int y, t_conf *conf)
+{
+	if (conf->map.map[y][x] == 'U')
+	{
+		conf->uni.pos_y = y;
+		conf->uni.pos_x = x;
+	}
+	if (conf->map.map[y][x] == 'U')
+	{
+		conf->uni.pos_y = y;
+		conf->uni.pos_x = x;
+	}
+	if (conf->map.map[y][x] == 'P')
+	{
+		conf->player.pos_y = y;
+		conf->player.pos_x = x;
+	}
+	if (conf->map.map[y][x] == 'T')
+	{
+		conf->enemy.pos_y = y;
+		conf->enemy.pos_x = x;
+	}
+}
+
+void	pos_check(char **map, t_conf *conf)
 {
 	size_t		y;
 	size_t		x;
@@ -72,21 +68,7 @@ void	char_pos_check(char **map, t_conf *conf)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'P')
-			{
-				conf->player.pos_y = y;
-				conf->player.pos_x = x;
-			}
-			if (map[y][x] == 'T')
-			{
-				conf->enemy.pos_y = y;
-				conf->enemy.pos_x = x;
-			}
-			if (map[y][x] == 'U')
-			{
-				conf->uni.pos_y = y;
-				conf->uni.pos_x = x;
-			}
+			char_pos_check(x, y, conf);
 			x++;
 		}
 		y++;
@@ -99,9 +81,10 @@ int	main(int ac, char **av)
 
 	args_check(ac, av);
 	initialize_conf(&conf);
+	initialize_conf2(&conf);
 	conf.map.map = map_set(av[1], &conf);
 	map_check(conf.map.map, &conf);
-	char_pos_check(conf.map.map, &conf);
+	pos_check(conf.map.map, &conf);
 	desplay_mlx(&conf);
 	mlx_loop_hook(conf.mlx, animation, &conf);
 	hook_loop_mlx(&conf);
