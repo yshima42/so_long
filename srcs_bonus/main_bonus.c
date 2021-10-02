@@ -22,6 +22,8 @@ void	initialize_conf(t_conf *conf)
 	conf->map.n_collectibles = 0;
 	conf->map.n_players = 0;
 	conf->map.n_exit = 0;
+	conf->map.n_enemies = 0;
+	conf->map.n_unis = 0;
 	conf->images.empty = NULL;
 	conf->images.wall = NULL;
 	conf->images.collectible = NULL;
@@ -79,6 +81,11 @@ void	char_pos_check(char **map, t_conf *conf)
 			{
 				conf->enemy.pos_y = y;
 				conf->enemy.pos_x = x;
+			}
+			if (map[y][x] == 'U')
+			{
+				conf->uni.pos_y = y;
+				conf->uni.pos_x = x;
 			}
 			x++;
 		}

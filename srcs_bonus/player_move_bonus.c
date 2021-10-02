@@ -19,6 +19,14 @@ void	enemy_step_to_next(char *current_pos, char *next_pos, t_conf *conf)
 		ft_swap(current_pos, next_pos);
 }
 
+void	uni_move(int u_y, int u_x, t_conf *conf)
+{
+	if (conf->player.n_clicks % 6 < 3)
+		enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y + 1][u_x], conf);
+	else
+		enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y - 1][u_x], conf);
+}
+
 void	enemy_move(int e_y, int e_x, t_conf *conf)
 {
 	conf->player.n_clicks++;
@@ -34,13 +42,20 @@ void	player_move(int keycode, t_conf *conf)
 	int	p_y;
 	int	e_x;
 	int	e_y;
+	int	u_x;
+	int	u_y;
 
 	p_x = conf->player.pos_x;
 	p_y = conf->player.pos_y;
 	e_x = conf->enemy.pos_x;
 	e_y = conf->enemy.pos_y;
+	u_x = conf->uni.pos_x;
+	u_y = conf->uni.pos_y;
 	if (keycode == W_KEY || keycode == A_KEY || keycode == S_KEY || keycode == D_KEY)
+	{
 		enemy_move(e_y, e_x, conf);
+		uni_move(u_y, u_x, conf);
+	}
 	if (keycode == W_KEY)
 		step_to_next(&conf->map.map[p_y][p_x], &conf->map.map[p_y - 1][p_x], conf);
 	if (keycode == A_KEY)
@@ -126,6 +141,8 @@ void	step_to_next(char *current_pos, char *next_pos, t_conf *conf)
 	else if (next_pos_check(*next_pos, 'E'))
 		game_complete(current_pos, next_pos, conf);
 	else if (next_pos_check(*next_pos, 'T'))
+		game_over(current_pos, next_pos, conf);
+	else if (next_pos_check(*next_pos, 'U'))
 		game_over(current_pos, next_pos, conf);
 	else if (next_pos_check(*next_pos, '0'))
 		ft_swap(current_pos, next_pos);

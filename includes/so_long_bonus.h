@@ -18,6 +18,12 @@
 # include "../libft/libft.h"
 # include "../mlx_linux/mlx.h"
 
+typedef struct s_uni
+{
+	int		pos_y;
+	int		pos_x;
+}	t_uni;
+
 typedef struct s_enemy
 {
 	int		pos_y;
@@ -42,6 +48,7 @@ typedef struct s_map
 	size_t	n_players;
 	size_t	n_exit;
 	size_t	n_enemies;
+	size_t	n_unis;
 }	t_map;
 
 typedef struct s_images
@@ -52,6 +59,7 @@ typedef struct s_images
 	void	*exit;
 	void	*player;
 	void	*enemy;
+	void	*uni;
 	int		size;
 }	t_images;
 
@@ -63,9 +71,10 @@ typedef struct s_conf
 	t_images	images;
 	t_player	player;
 	t_enemy		enemy;
+	t_enemy		uni;
 }	t_conf;
 
-# define VALID_CHAR 		"01CEPT"
+# define VALID_CHAR 		"01CEPTU"
 
 # define IMG_EMPTY 			"images/empty.xpm"
 # define IMG_WALL 			"images/wall.xpm"
@@ -76,8 +85,10 @@ typedef struct s_conf
 # define IMG_PLAYER_3		"images/player3.xpm"
 # define IMG_PLAYER_4		"images/player4.xpm"
 # define IMG_PLAYER_5		"images/player5.xpm"
-# define IMG_ENEMY_1		"images/enemy1.xpm"
-# define IMG_ENEMY_2		"images/enemy2.xpm"
+# define IMG_ENEMY_1		"images/ripple1.xpm"
+# define IMG_ENEMY_2		"images/ripple2.xpm"
+# define IMG_UNICORN_1		"images/uni1.xpm"
+# define IMG_UNICORN_2		"images/uni2.xpm"
 
 # define CHIP_SIZE 			32
 # define SCREAN_SIZE 		20

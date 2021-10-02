@@ -1,4 +1,7 @@
 # remaining tasks
+
+- after invalid char, it starts from the different place
+
 - scroll ok
 - free ? check the error statement ok
 - map error at the same time ok
