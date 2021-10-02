@@ -21,10 +21,25 @@ void	enemy_step_to_next(char *current_pos, char *next_pos, t_conf *conf)
 
 void	uni_move(int u_y, int u_x, t_conf *conf)
 {
-	if (conf->player.n_clicks % 6 < 3)
-		enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y + 1][u_x], conf);
-	else
+	
+	fprintf(stderr, "u_x: %d\nu_y: %d\n", u_x, u_y);
+	
+	if (conf->player.pos_x < u_x)
+	{
+		enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y][u_x - 1], conf);
+	}
+	if ((conf->player.pos_x >= u_x))
+	{
+		enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y][u_x + 1], conf);
+	}
+	if ((conf->player.pos_y < u_y))
+	{
 		enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y - 1][u_x], conf);
+	}
+	if ((conf->player.pos_y >= u_y))
+	{
+		enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y + 1][u_x], conf);
+	}
 }
 
 void	enemy_move(int e_y, int e_x, t_conf *conf)
