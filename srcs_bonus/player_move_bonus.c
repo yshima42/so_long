@@ -19,6 +19,15 @@ void	enemy_step_to_next(char *current_pos, char *next_pos, t_conf *conf)
 		ft_swap(current_pos, next_pos);
 }
 
+void	enemy_move(int e_y, int e_x, t_conf *conf)
+{
+	conf->player.n_clicks++;
+	if (conf->player.n_clicks % 4 < 2)
+		enemy_step_to_next(&conf->map.map[e_y][e_x], &conf->map.map[e_y + 1][e_x], conf);
+	else
+		enemy_step_to_next(&conf->map.map[e_y][e_x], &conf->map.map[e_y - 1][e_x], conf);
+}
+
 void	player_move(int keycode, t_conf *conf)
 {
 	int	p_x;
@@ -31,13 +40,7 @@ void	player_move(int keycode, t_conf *conf)
 	e_x = conf->enemy.pos_x;
 	e_y = conf->enemy.pos_y;
 	if (keycode == W_KEY || keycode == A_KEY || keycode == S_KEY || keycode == D_KEY)
-	{
-		conf->player.n_clicks++;
-		if (conf->player.n_clicks % 2)
-			enemy_step_to_next(&conf->map.map[e_y][e_x], &conf->map.map[e_y + 1][e_x], conf);
-		else
-			enemy_step_to_next(&conf->map.map[e_y][e_x], &conf->map.map[e_y - 1][e_x], conf);
-	}
+		enemy_move(e_y, e_x, conf);
 	if (keycode == W_KEY)
 		step_to_next(&conf->map.map[p_y][p_x], &conf->map.map[p_y - 1][p_x], conf);
 	if (keycode == A_KEY)

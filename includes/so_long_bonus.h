@@ -113,7 +113,7 @@ void	step_counter(t_conf *conf);
 void	size_check(t_conf *conf);
 
 //player_move_bonus.c
-void	enemy_move(int keycode, t_conf *conf);
+void	enemy_move(int e_y, int e_x, t_conf *conf);
 void	player_move(int keycode, t_conf *conf);
 void	step_to_next(char *current_pos, char *next_pos, t_conf *conf);
 void	game_complete(char *a, char *b, t_conf *conf);
