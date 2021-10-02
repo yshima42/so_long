@@ -18,11 +18,18 @@
 # include "../libft/libft.h"
 # include "../mlx_linux/mlx.h"
 
+typedef struct s_enemy
+{
+	int		pos_y;
+	int		pos_x;
+}	t_enemy;
+
 typedef struct s_player
 {
 	int		pos_y;
 	int		pos_x;
 	size_t	n_steps;
+	size_t	n_clicks;
 	size_t	collectibles;
 }	t_player;
 
@@ -34,6 +41,7 @@ typedef struct s_map
 	size_t	n_collectibles;
 	size_t	n_players;
 	size_t	n_exit;
+	size_t	n_enemies;
 }	t_map;
 
 typedef struct s_images
@@ -54,6 +62,7 @@ typedef struct s_conf
 	t_map		map;
 	t_images	images;
 	t_player	player;
+	t_enemy		enemy;
 }	t_conf;
 
 # define VALID_CHAR 		"01CEPT"
@@ -104,6 +113,7 @@ void	step_counter(t_conf *conf);
 void	size_check(t_conf *conf);
 
 //player_move_bonus.c
+void	enemy_move(int keycode, t_conf *conf);
 void	player_move(int keycode, t_conf *conf);
 void	step_to_next(char *current_pos, char *next_pos, t_conf *conf);
 void	game_complete(char *a, char *b, t_conf *conf);

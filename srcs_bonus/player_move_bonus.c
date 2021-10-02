@@ -12,21 +12,40 @@
 
 #include "../includes/so_long_bonus.h"
 
+void	enemy_step_to_next(char *current_pos, char *next_pos, t_conf *conf)
+{
+	(void)conf;
+	if (next_pos_check(*next_pos, '0'))
+		ft_swap(current_pos, next_pos);
+}
+
 void	player_move(int keycode, t_conf *conf)
 {
-	int	x;
-	int	y;
+	int	p_x;
+	int	p_y;
+	int	e_x;
+	int	e_y;
 
-	x = conf->player.pos_x;
-	y = conf->player.pos_y;
+	p_x = conf->player.pos_x;
+	p_y = conf->player.pos_y;
+	e_x = conf->enemy.pos_x;
+	e_y = conf->enemy.pos_y;
+	if (keycode == W_KEY || keycode == A_KEY || keycode == S_KEY || keycode == D_KEY)
+	{
+		conf->player.n_clicks++;
+		if (conf->player.n_clicks % 2)
+			enemy_step_to_next(&conf->map.map[e_y][e_x], &conf->map.map[e_y + 1][e_x], conf);
+		else
+			enemy_step_to_next(&conf->map.map[e_y][e_x], &conf->map.map[e_y - 1][e_x], conf);
+	}
 	if (keycode == W_KEY)
-		step_to_next(&conf->map.map[y][x], &conf->map.map[y - 1][x], conf);
+		step_to_next(&conf->map.map[p_y][p_x], &conf->map.map[p_y - 1][p_x], conf);
 	if (keycode == A_KEY)
-		step_to_next(&conf->map.map[y][x], &conf->map.map[y][x - 1], conf);
+		step_to_next(&conf->map.map[p_y][p_x], &conf->map.map[p_y][p_x - 1], conf);
 	if (keycode == S_KEY)
-		step_to_next(&conf->map.map[y][x], &conf->map.map[y + 1][x], conf);
+		step_to_next(&conf->map.map[p_y][p_x], &conf->map.map[p_y + 1][p_x], conf);
 	if (keycode == D_KEY)
-		step_to_next(&conf->map.map[y][x], &conf->map.map[y][x + 1], conf);
+		step_to_next(&conf->map.map[p_y][p_x], &conf->map.map[p_y][p_x + 1], conf);
 }
 
 int	next_pos_check(char next_pos_c, char check_c)
@@ -44,12 +63,41 @@ void	collect_item(char *a, char *b, t_conf *conf)
 	conf->player.collectibles++;
 }
 
+void	game_finish_animation(char *img1, char *img2, t_conf *conf)
+{
+	int	count;
+	int	n_while;
+	
+	n_while = 0;
+	while(n_while++ < 4)
+	{
+		count = 0;
+		while (count++ < 2000)
+		{
+			conf->images.player = mlx_xpm_file_to_image(conf->mlx, img1,
+				&conf->images.size, &conf->images.size);
+			animation_to_screan(conf->map.map, conf);
+			if (!(conf->player.pos_y % SCREAN_SIZE) || !(conf->player.pos_x % SCREAN_SIZE))
+				mlx_clear_window(conf->mlx, conf->win);
+		}
+		while (count++ < 4000)
+		{
+			conf->images.player = mlx_xpm_file_to_image(conf->mlx, img2,
+				&conf->images.size, &conf->images.size);
+			animation_to_screan(conf->map.map, conf);
+		}
+	}
+}
+
 void	game_complete(char *a, char *b, t_conf *conf)
 {	
 	if (conf->player.collectibles == conf->map.n_collectibles)
 	{
 		*b = *a;
 		*a = '0';
+		char_pos_check(conf->map.map, conf);
+		array_to_screan(conf->map.map, conf);
+		game_finish_animation(IMG_PLAYER_5, IMG_PLAYER, conf);
 		ft_putstr_fd("Game Clear!!\n", 1);
 		free_all_exit(conf);
 	}
@@ -59,6 +107,9 @@ void	game_over(char *a, char *b, t_conf *conf)
 {	
 	*b = *a;
 	*a = '0';
+	char_pos_check(conf->map.map, conf);
+	array_to_screan(conf->map.map, conf);
+	game_finish_animation(IMG_PLAYER_3, IMG_PLAYER_4, conf);
 	ft_putstr_fd("Game Over: You hit an enemy!!\n", 1);
 	free_all_exit(conf);
 }

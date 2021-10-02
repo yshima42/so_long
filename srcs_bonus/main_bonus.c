@@ -32,6 +32,9 @@ void	initialize_conf(t_conf *conf)
 	conf->player.pos_y = 0;
 	conf->player.pos_x = 0;
 	conf->player.n_steps = 0;
+	conf->player.n_clicks = 0;
+	conf->enemy.pos_y = 0;
+	conf->enemy.pos_x = 0;
 	conf->player.collectibles = 0;
 }
 
@@ -71,6 +74,11 @@ void	char_pos_check(char **map, t_conf *conf)
 			{
 				conf->player.pos_y = y;
 				conf->player.pos_x = x;
+			}
+			if (map[y][x] == 'T')
+			{
+				conf->enemy.pos_y = y;
+				conf->enemy.pos_x = x;
 			}
 			x++;
 		}

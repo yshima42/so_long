@@ -12,6 +12,8 @@
 - error \n check ok
 - NULL ume ok
 
+- big map takes too much time for animation
+
 - exit situation
     - arg
     - map_check 
