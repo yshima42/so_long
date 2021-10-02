@@ -12,6 +12,15 @@
 
 #include "../includes/so_long_bonus.h"
 
+void	desplay_counter(t_conf *conf)
+{
+	char	*s_counter;
+
+	s_counter = ft_itoa(conf->player.n_steps);
+	fprintf(stderr, "%s", s_counter);
+	mlx_string_put(conf->mlx, conf->win, 8, CHIP_SIZE * SCREAN_SIZE - 8, 0xFFFFFF, s_counter);
+}
+
 void	array_to_screan(char **map, t_conf *conf)
 {
 	void	*img_ptr;
@@ -35,6 +44,7 @@ void	array_to_screan(char **map, t_conf *conf)
 		}
 		y++;
 	}
+	desplay_counter(conf);
 }
 
 int	key_hook(int keycode, t_conf *conf)

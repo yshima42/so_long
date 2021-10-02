@@ -22,7 +22,7 @@ void	enemy_step_to_next(char *current_pos, char *next_pos, t_conf *conf)
 void	enemy_move(int e_y, int e_x, t_conf *conf)
 {
 	conf->player.n_clicks++;
-	if (conf->player.n_clicks % 4 < 2)
+	if (conf->player.n_clicks % 6 < 3)
 		enemy_step_to_next(&conf->map.map[e_y][e_x], &conf->map.map[e_y + 1][e_x], conf);
 	else
 		enemy_step_to_next(&conf->map.map[e_y][e_x], &conf->map.map[e_y - 1][e_x], conf);
