@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   enemy_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/03 00:22:39 by yshimazu          #+#    #+#             */
+/*   Updated: 2021/10/03 00:22:41 by yshimazu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long_bonus.h"
 
 void	enemy_step_to_next(char *current_pos, char *next_pos, t_conf *conf)
@@ -17,16 +29,20 @@ void	uni_move(int u_y, int u_x, t_conf *conf)
 	if (dis_y > dis_x)
 	{
 		if ((conf->player.pos_y < u_y))
-			enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y - 1][u_x], conf);
+			enemy_step_to_next(&conf->map.map[u_y][u_x],
+				&conf->map.map[u_y - 1][u_x], conf);
 		else
-			enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y + 1][u_x], conf);
+			enemy_step_to_next(&conf->map.map[u_y][u_x],
+				&conf->map.map[u_y + 1][u_x], conf);
 	}
 	else
 	{
 		if (conf->player.pos_x < u_x)
-			enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y][u_x - 1], conf);
+			enemy_step_to_next(&conf->map.map[u_y][u_x],
+				&conf->map.map[u_y][u_x - 1], conf);
 		else
-			enemy_step_to_next(&conf->map.map[u_y][u_x], &conf->map.map[u_y][u_x + 1], conf);
+			enemy_step_to_next(&conf->map.map[u_y][u_x],
+				&conf->map.map[u_y][u_x + 1], conf);
 	}
 }
 
@@ -34,7 +50,9 @@ void	enemy_move(int e_y, int e_x, t_conf *conf)
 {
 	conf->player.n_clicks++;
 	if (conf->player.n_clicks % 6 < 3)
-		enemy_step_to_next(&conf->map.map[e_y][e_x], &conf->map.map[e_y + 1][e_x], conf);
+		enemy_step_to_next(&conf->map.map[e_y][e_x],
+			&conf->map.map[e_y + 1][e_x], conf);
 	else
-		enemy_step_to_next(&conf->map.map[e_y][e_x], &conf->map.map[e_y - 1][e_x], conf);
+		enemy_step_to_next(&conf->map.map[e_y][e_x],
+			&conf->map.map[e_y - 1][e_x], conf);
 }

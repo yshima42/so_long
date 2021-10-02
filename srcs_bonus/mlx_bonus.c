@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx.c                                              :+:      :+:    :+:   */
+/*   mlx_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 22:03:22 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/10/01 22:04:08 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/03 00:27:19 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	array_to_screan(char **map, t_conf *conf)
 	size_t	scroll_y;
 	size_t	scroll_x;
 
-	//mlx_clear_window(conf->mlx, conf->win);
 	scroll_y = (conf->player.pos_y / SCREAN_SIZE) * SCREAN_SIZE;
 	scroll_x = (conf->player.pos_x / SCREAN_SIZE) * SCREAN_SIZE;
 	y = 0;
@@ -55,7 +54,8 @@ int	key_hook(int keycode, t_conf *conf)
 	if (keycode == ESC_KEY)
 		free_all_exit(conf);
 	pos_check(conf->map.map, conf);
-	if (!(conf->player.pos_y % SCREAN_SIZE) || !(conf->player.pos_x % SCREAN_SIZE))
+	if (!(conf->player.pos_y % SCREAN_SIZE)
+		|| !(conf->player.pos_x % SCREAN_SIZE))
 		mlx_clear_window(conf->mlx, conf->win);
 	array_to_screan(conf->map.map, conf);
 	return (0);

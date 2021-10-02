@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   map_check_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 16:10:30 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/10/01 22:05:27 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/03 00:25:24 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ char	*inmap_char_count(char c, t_conf *conf)
 void	n_char_check(char **map, t_conf *conf)
 {
 	if (!conf->map.n_exit || conf->map.n_players != 1
-		|| !conf->map.n_collectibles || conf->map.n_enemies != 1 || conf->map.n_unis != 1)
+		|| !conf->map.n_collectibles || conf->map.n_enemies != 1
+		|| conf->map.n_unis != 1)
 		map_error_output(map,
 			"Need one P, E, and U, and more than one C in the file\n");
 }

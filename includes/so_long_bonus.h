@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 21:56:57 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/10/01 21:59:23 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/03 00:23:19 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdint.h>
 
@@ -153,7 +153,6 @@ void	perror_exit(char *error_message);
 void	error_mlx(t_conf *conf);
 int		extension_check(char *filename);
 void	args_check(int ac, char **av);
-void	error_check_mlx(void *v_ptr, t_conf *conf);
 
 //mlx_utils_bonus.c
 void	array_to_screan(char **map, t_conf *conf);
@@ -161,11 +160,8 @@ int		key_hook(int keycode, t_conf *conf);
 void	hook_loop_mlx(t_conf *conf);
 void	desplay_mlx(t_conf *conf);
 
-
-
 //animation_bonus.c
-//void	animation_to_screan(int pos_y, int pos_x, char **map, t_conf *conf);
-void	animation_to_screan(int pos_y, int pos_x, char **map, t_conf *conf);
+void	ani_to_dis(int pos_y, int pos_x, char **map, t_conf *conf);
 int		animation(t_conf *conf);
 
 //main_bonus.c

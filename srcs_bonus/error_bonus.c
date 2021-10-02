@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 16:08:59 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/10/01 22:05:07 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/03 00:23:42 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,6 @@ void	perror_exit(char *error_message)
 
 void	error_mlx(t_conf *conf)
 {
-	ft_putstr_fd("Error\nSomething is wring in mlx function", 2);
-	free_all_exit(conf);
-}
-
-void	error_check_mlx(void *v_ptr, t_conf *conf)
-{
-	if (!v_ptr)
 	ft_putstr_fd("Error\nSomething is wring in mlx function", 2);
 	free_all_exit(conf);
 }

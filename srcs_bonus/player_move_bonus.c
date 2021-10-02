@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_move.c                                      :+:      :+:    :+:   */
+/*   player_move_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 16:13:46 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/09/30 16:13:47 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/03 00:29:47 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,24 @@ void	player_move(int keycode, t_conf *conf)
 
 	p_x = conf->player.pos_x;
 	p_y = conf->player.pos_y;
-	if (keycode == W_KEY || keycode == A_KEY || keycode == S_KEY || keycode == D_KEY)
+	if (keycode == W_KEY || keycode == A_KEY
+		|| keycode == S_KEY || keycode == D_KEY)
 	{
 		enemy_move(conf->enemy.pos_y, conf->enemy.pos_x, conf);
 		uni_move(conf->uni.pos_y, conf->uni.pos_x, conf);
 	}
 	if (keycode == W_KEY)
-		step_to_next(&conf->map.map[p_y][p_x], &conf->map.map[p_y - 1][p_x], conf);
+		step_to_next(&conf->map.map[p_y][p_x],
+			&conf->map.map[p_y - 1][p_x], conf);
 	if (keycode == A_KEY)
-		step_to_next(&conf->map.map[p_y][p_x], &conf->map.map[p_y][p_x - 1], conf);
+		step_to_next(&conf->map.map[p_y][p_x],
+			&conf->map.map[p_y][p_x - 1], conf);
 	if (keycode == S_KEY)
-		step_to_next(&conf->map.map[p_y][p_x], &conf->map.map[p_y + 1][p_x], conf);
+		step_to_next(&conf->map.map[p_y][p_x],
+			&conf->map.map[p_y + 1][p_x], conf);
 	if (keycode == D_KEY)
-		step_to_next(&conf->map.map[p_y][p_x], &conf->map.map[p_y][p_x + 1], conf);
+		step_to_next(&conf->map.map[p_y][p_x],
+			&conf->map.map[p_y][p_x + 1], conf);
 }
 
 void	game_complete(char *a, char *b, t_conf *conf)
