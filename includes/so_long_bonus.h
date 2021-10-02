@@ -43,6 +43,7 @@ typedef struct s_images
 	void	*collectible;
 	void	*exit;
 	void	*player;
+	void	*enemy;
 	int		size;
 }	t_images;
 
@@ -66,6 +67,8 @@ typedef struct s_conf
 # define IMG_PLAYER_3		"images/player3.xpm"
 # define IMG_PLAYER_4		"images/player4.xpm"
 # define IMG_PLAYER_5		"images/player5.xpm"
+# define IMG_ENEMY_1		"images/enemy1.xpm"
+# define IMG_ENEMY_2		"images/enemy2.xpm"
 
 # define CHIP_SIZE 			32
 # define SCREAN_SIZE 		20
@@ -76,51 +79,55 @@ typedef struct s_conf
 # define S_KEY 115
 # define D_KEY 100
 
-//utils.c
+//utils_bonus.c
 void	array_loop(char **map, t_conf *conf, char *f(char c, t_conf *conf));
 int		ft_open_readfile(char *readfile);
 char	**lst_to_array(t_list *buf, size_t height);
 size_t	fd_to_lst(int fd, t_list **buf);
 void	ft_swap(char *a, char *b);
 
-//free.c
+//free_bonus.c
 char	**ft_arrayfree(char **tab);
 int		free_all_exit(t_conf *conf);
 
-//map_check.c
+//map_check_bonus.c
 void	rectangular_check(char **map, t_conf *conf);
 void	wall_check(char **map, t_conf *conf);
 char	*invalid_char_check(char c, t_conf *conf);
 char	*inmap_char_count(char c, t_conf *conf);
 void	n_char_check(char **map, t_conf *conf);
 
-//sl_utils.c
+//sl_utils_bonus.c
 void	*chr_to_imgptr(char c, t_conf *conf);
 void	chip_set(t_conf *conf);
 void	step_counter(t_conf *conf);
 void	size_check(t_conf *conf);
 
-//player_move.c
+//player_move_bonus.c
 void	player_move(int keycode, t_conf *conf);
 void	step_to_next(char *current_pos, char *next_pos, t_conf *conf);
 void	game_complete(char *a, char *b, t_conf *conf);
 void	collect_item(char *a, char *b, t_conf *conf);
 int		next_pos_check(char next_pos_c, char check_c);
 
-//error_output.c
+//error_output_bonus.c
 void	map_error_output(char **map, char *output);
 void	perror_exit(char *error_message);
 void	error_mlx(t_conf *conf);
 int		extension_check(char *filename);
 void	args_check(int ac, char **av);
 
-//mlx_utils.c
+//mlx_utils_bonus.c
 void	array_to_screan(char **map, t_conf *conf);
 int		key_hook(int keycode, t_conf *conf);
 void	hook_loop_mlx(t_conf *conf);
 void	desplay_mlx(t_conf *conf);
 
-//main.c
+//animation_bonus.c
+void	animation_to_screan(char **map, t_conf *conf);
+int		animation(t_conf *conf);
+
+//main_bonus.c
 void	player_pos_check(char **map, t_conf *conf);
 
 #endif
