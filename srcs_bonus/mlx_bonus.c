@@ -17,7 +17,6 @@ void	desplay_counter(t_conf *conf)
 	char	*s_counter;
 
 	s_counter = ft_itoa(conf->player.n_steps);
-	fprintf(stderr, "%s", s_counter);
 	mlx_string_put(conf->mlx, conf->win, 8, 16, 0xFFFFFF, s_counter);
 }
 
@@ -29,7 +28,7 @@ void	array_to_screan(char **map, t_conf *conf)
 	size_t	scroll_y;
 	size_t	scroll_x;
 
-	mlx_clear_window(conf->mlx, conf->win);
+	//mlx_clear_window(conf->mlx, conf->win);
 	scroll_y = (conf->player.pos_y / SCREAN_SIZE) * SCREAN_SIZE;
 	scroll_x = (conf->player.pos_x / SCREAN_SIZE) * SCREAN_SIZE;
 	y = 0;
@@ -68,8 +67,8 @@ void	desplay_mlx(t_conf *conf)
 	if (!conf->mlx)
 		error_mlx(conf);
 	chip_set(conf);
-	conf->win = mlx_new_window(conf->mlx, SCREAN_SIZE * CHIP_SIZE,
-			SCREAN_SIZE * CHIP_SIZE, "so_long");
+	conf->win = mlx_new_window(conf->mlx, SCREAN_SIZE * (CHIP_SIZE + 1),
+			SCREAN_SIZE * (CHIP_SIZE + 1), "so_long");
 	if (!conf->mlx)
 		error_mlx(conf);
 	array_to_screan(conf->map.map, conf);
