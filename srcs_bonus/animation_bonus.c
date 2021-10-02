@@ -16,6 +16,7 @@ void	animation_to_screan(char **map, t_conf *conf)
 		CHIP_SIZE * (conf->player.pos_x - scroll_x), CHIP_SIZE * (conf->player.pos_y - scroll_y));
 }
 
+// fix with animation_to_screan
 int	animation(t_conf *conf)
 {
 	static int count;
@@ -26,10 +27,18 @@ int	animation(t_conf *conf)
 		conf->images.player = mlx_xpm_file_to_image(conf->mlx, IMG_PLAYER,
 			&conf->images.size, &conf->images.size);
 		animation_to_screan(conf->map.map, conf);
+		//fix
+		conf->images.enemy = mlx_xpm_file_to_image(conf->mlx, IMG_ENEMY_1,
+			&conf->images.size, &conf->images.size);
+		animation_to_screan(conf->map.map, conf);
 	}
 	else if (count <= 1000)
 	{
 		conf->images.player = mlx_xpm_file_to_image(conf->mlx, IMG_PLAYER_2,
+			&conf->images.size, &conf->images.size);
+		animation_to_screan(conf->map.map, conf);
+		//fix
+		conf->images.enemy = mlx_xpm_file_to_image(conf->mlx, IMG_ENEMY_2,
 			&conf->images.size, &conf->images.size);
 		animation_to_screan(conf->map.map, conf);
 	}

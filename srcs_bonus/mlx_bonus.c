@@ -44,7 +44,7 @@ int	key_hook(int keycode, t_conf *conf)
 		player_move(keycode, conf);
 	if (keycode == ESC_KEY)
 		free_all_exit(conf);
-	player_pos_check(conf->map.map, conf);
+	char_pos_check(conf->map.map, conf);
 	if (!(conf->player.pos_y % SCREAN_SIZE) || !(conf->player.pos_x % SCREAN_SIZE))
 		mlx_clear_window(conf->mlx, conf->win);
 	array_to_screan(conf->map.map, conf);

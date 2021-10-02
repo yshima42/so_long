@@ -55,6 +55,14 @@ void	game_complete(char *a, char *b, t_conf *conf)
 	}
 }
 
+void	game_over(char *a, char *b, t_conf *conf)
+{	
+	*b = *a;
+	*a = '0';
+	ft_putstr_fd("Game Over: You hit an enemy!!\n", 1);
+	free_all_exit(conf);
+}
+
 void	step_to_next(char *current_pos, char *next_pos, t_conf *conf)
 {
 	if (next_pos_check(*next_pos, 'C') || next_pos_check(*next_pos, '0'))
@@ -63,6 +71,8 @@ void	step_to_next(char *current_pos, char *next_pos, t_conf *conf)
 		collect_item(current_pos, next_pos, conf);
 	else if (next_pos_check(*next_pos, 'E'))
 		game_complete(current_pos, next_pos, conf);
+	else if (next_pos_check(*next_pos, 'T'))
+		game_over(current_pos, next_pos, conf);
 	else if (next_pos_check(*next_pos, '0'))
 		ft_swap(current_pos, next_pos);
 }

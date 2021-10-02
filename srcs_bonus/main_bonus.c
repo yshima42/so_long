@@ -27,6 +27,7 @@ void	initialize_conf(t_conf *conf)
 	conf->images.collectible = NULL;
 	conf->images.exit = NULL;
 	conf->images.player = NULL;
+	conf->images.enemy = NULL;
 	conf->images.size = CHIP_SIZE;
 	conf->player.pos_y = 0;
 	conf->player.pos_x = 0;
@@ -55,7 +56,7 @@ char	**map_set(char *mapfile, t_conf *conf)
 	return (lst_to_array(buf, conf->map.height));
 }
 
-void	player_pos_check(char **map, t_conf *conf)
+void	char_pos_check(char **map, t_conf *conf)
 {
 	size_t		y;
 	size_t		x;
@@ -85,7 +86,7 @@ int	main(int ac, char **av)
 	initialize_conf(&conf);
 	conf.map.map = map_set(av[1], &conf);
 	map_check(conf.map.map, &conf);
-	player_pos_check(conf.map.map, &conf);
+	char_pos_check(conf.map.map, &conf);
 	desplay_mlx(&conf);
 	mlx_loop_hook(conf.mlx, animation, &conf);
 	hook_loop_mlx(&conf);

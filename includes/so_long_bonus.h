@@ -56,7 +56,7 @@ typedef struct s_conf
 	t_player	player;
 }	t_conf;
 
-# define VALID_CHAR 		"01CEP"
+# define VALID_CHAR 		"01CEPT"
 
 # define IMG_EMPTY 			"images/empty.xpm"
 # define IMG_WALL 			"images/wall.xpm"
@@ -128,6 +128,6 @@ void	animation_to_screan(char **map, t_conf *conf);
 int		animation(t_conf *conf);
 
 //main_bonus.c
-void	player_pos_check(char **map, t_conf *conf);
+void	char_pos_check(char **map, t_conf *conf);
 
 #endif

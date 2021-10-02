@@ -24,6 +24,8 @@ void	*chr_to_imgptr(char c, t_conf *conf)
 		return (conf->images.exit);
 	else if (c == 'P')
 		return (conf->images.player);
+	else if (c == 'T')
+		return (conf->images.enemy);
 	else
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -53,6 +55,10 @@ void	chip_set(t_conf *conf)
 	conf->images.player = mlx_xpm_file_to_image(conf->mlx, IMG_PLAYER,
 			&conf->images.size, &conf->images.size);
 	if (!conf->images.player)
+		error_mlx(conf);
+	conf->images.enemy = mlx_xpm_file_to_image(conf->mlx, IMG_ENEMY_1,
+			&conf->images.size, &conf->images.size);
+	if (!conf->images.enemy)
 		error_mlx(conf);
 }
 
