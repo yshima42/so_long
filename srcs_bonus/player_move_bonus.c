@@ -53,7 +53,7 @@ void	game_complete(char *a, char *b, t_conf *conf)
 	}
 }
 
-void	game_over(char *a, char *b, t_conf *conf)
+static void	game_over(char *a, char *b, t_conf *conf)
 {	
 	*b = *a;
 	*a = '0';

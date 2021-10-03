@@ -12,14 +12,14 @@
 
 #include "../includes/so_long_bonus.h"
 
-void	enemy_step_to_next(char *current_pos, char *next_pos, t_conf *conf)
+static void	enemy_step_to_next(char *current_pos, char *next_pos, t_conf *conf)
 {
 	(void)conf;
 	if (next_pos_check(*next_pos, '0'))
 		ft_swap(current_pos, next_pos);
 }
 
-int	ft_abs(int n)
+static int	ft_abs(int n)
 {
 	if (n < 0)
 		return (-n);

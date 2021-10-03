@@ -12,7 +12,7 @@
 
 #include "../includes/so_long_bonus.h"
 
-void	desplay_counter(t_conf *conf)
+static void	desplay_counter(t_conf *conf)
 {
 	char	*s_counter;
 
@@ -47,7 +47,7 @@ void	array_to_screan(char **map, t_conf *conf)
 	desplay_counter(conf);
 }
 
-int	key_hook(int keycode, t_conf *conf)
+static int	key_hook(int keycode, t_conf *conf)
 {
 	if (keycode == W_KEY || keycode == A_KEY
 		|| keycode == S_KEY || keycode == D_KEY)

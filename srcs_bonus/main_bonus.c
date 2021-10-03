@@ -12,7 +12,7 @@
 
 #include "../includes/so_long_bonus.h"
 
-void	map_check(char **map, t_conf *conf)
+static void	map_check(char **map, t_conf *conf)
 {
 	rectangular_check(map, conf);
 	wall_check(map, conf);
@@ -21,7 +21,7 @@ void	map_check(char **map, t_conf *conf)
 	n_char_check(map, conf);
 }
 
-char	**map_set(char *mapfile, t_conf *conf)
+static char	**map_set(char *mapfile, t_conf *conf)
 {
 	int		fd;
 	t_list	*buf;
@@ -33,7 +33,7 @@ char	**map_set(char *mapfile, t_conf *conf)
 	return (lst_to_array(buf, conf->map.height));
 }
 
-void	char_pos_check(int x, int y, t_conf *conf)
+static void	char_pos_check(int x, int y, t_conf *conf)
 {
 	if (conf->map.map[y][x] == 'U')
 	{

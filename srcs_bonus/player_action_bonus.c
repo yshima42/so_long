@@ -27,7 +27,7 @@ void	collect_item(char *a, char *b, t_conf *conf)
 	conf->player.collectibles++;
 }
 
-void	n_anime_loop(char *img2, t_conf *conf)
+static void	n_anime_loop(char *img2, t_conf *conf)
 {
 	int	count;
 

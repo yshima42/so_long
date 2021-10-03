@@ -33,7 +33,7 @@ void	error_mlx(t_conf *conf)
 	free_all_exit(conf);
 }
 
-int	extension_check(char *filename)
+static int	extension_check(char *filename)
 {
 	char	*dot_ptr;
 
