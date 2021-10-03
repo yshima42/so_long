@@ -40,11 +40,6 @@ void	char_pos_check(int x, int y, t_conf *conf)
 		conf->uni.pos_y = y;
 		conf->uni.pos_x = x;
 	}
-	if (conf->map.map[y][x] == 'U')
-	{
-		conf->uni.pos_y = y;
-		conf->uni.pos_x = x;
-	}
 	if (conf->map.map[y][x] == 'P')
 	{
 		conf->player.pos_y = y;

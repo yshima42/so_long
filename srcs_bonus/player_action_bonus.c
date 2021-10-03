@@ -31,12 +31,6 @@ void	n_anime_loop(char *img2, t_conf *conf)
 {
 	int count;
 
-	if (!(conf->player.pos_y % SCREAN_SIZE)
-			|| !(conf->player.pos_x % SCREAN_SIZE))
-	{
-		mlx_clear_window(conf->mlx, conf->win);
-		array_to_screan(conf->map.map, conf);
-	}
 	count = 0;
 	while (++count < 10000)
 		ani_to_dis(conf->player.pos_y, conf->player.pos_x,
@@ -54,6 +48,12 @@ void	game_finish_animation(char *img1, char *img2, t_conf *conf)
 	int	n_animation;
 
 	n_animation = 0;
+	if (!(conf->player.pos_y % SCREAN_SIZE)
+			|| !(conf->player.pos_x % SCREAN_SIZE))
+	{
+		mlx_clear_window(conf->mlx, conf->win);
+		array_to_screan(conf->map.map, conf);
+	}
 	while (++n_animation < 5)
 	{
 		mlx_destroy_image(conf->mlx, conf->images.player);
