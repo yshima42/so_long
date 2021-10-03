@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 21:56:57 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/10/03 00:23:19 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/03 22:47:48 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	ft_swap(char *a, char *b);
 
 //free_bonus.c
 char	**ft_arrayfree(char **tab);
-int	free_all_exit(t_conf *conf);
+int		free_all_exit(t_conf *conf);
 
 //map_check_bonus.c
 void	rectangular_check(char **map, t_conf *conf);

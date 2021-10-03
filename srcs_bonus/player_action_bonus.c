@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 00:29:04 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/10/03 00:29:04 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/03 22:47:00 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	collect_item(char *a, char *b, t_conf *conf)
 
 void	n_anime_loop(char *img2, t_conf *conf)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (++count < 10000)
@@ -37,7 +37,7 @@ void	n_anime_loop(char *img2, t_conf *conf)
 			conf->map.map, conf);
 	mlx_destroy_image(conf->mlx, conf->images.player);
 	conf->images.player = mlx_xpm_file_to_image(conf->mlx, img2,
-				&conf->images.size, &conf->images.size);
+			&conf->images.size, &conf->images.size);
 	while (++count < 20000)
 		ani_to_dis(conf->player.pos_y, conf->player.pos_x,
 			conf->map.map, conf);
@@ -49,7 +49,7 @@ void	game_finish_animation(char *img1, char *img2, t_conf *conf)
 
 	n_animation = 0;
 	if (!(conf->player.pos_y % SCREAN_SIZE)
-			|| !(conf->player.pos_x % SCREAN_SIZE))
+		|| !(conf->player.pos_x % SCREAN_SIZE))
 	{
 		mlx_clear_window(conf->mlx, conf->win);
 		array_to_screan(conf->map.map, conf);
@@ -58,7 +58,7 @@ void	game_finish_animation(char *img1, char *img2, t_conf *conf)
 	{
 		mlx_destroy_image(conf->mlx, conf->images.player);
 		conf->images.player = mlx_xpm_file_to_image(conf->mlx, img1,
-					&conf->images.size, &conf->images.size);
+				&conf->images.size, &conf->images.size);
 		n_anime_loop(img2, conf);
 	}
 }
