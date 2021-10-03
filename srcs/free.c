@@ -46,8 +46,8 @@ int	free_all_exit(t_conf *conf)
 	if (conf->mlx)
 	{
 		mlx_destroy_display(conf->mlx);
+		mlx_loop_end(conf->mlx);
 		free(conf->mlx);
-		conf->mlx = NULL;
 	}
 	exit (EXIT_SUCCESS);
 	return (0);

@@ -58,8 +58,8 @@ void	desplay_mlx(t_conf *conf)
 	if (!conf->mlx)
 		error_mlx(conf);
 	chip_set(conf);
-	conf->win = mlx_new_window(conf->mlx, SCREAN_SIZE * CHIP_SIZE,
-			SCREAN_SIZE * CHIP_SIZE, "so_long");
+	conf->win = mlx_new_window(conf->mlx, SCREAN_SIZE * (CHIP_SIZE + 1),
+			SCREAN_SIZE * (CHIP_SIZE + 1), "so_long");
 	if (!conf->mlx)
 		error_mlx(conf);
 	array_to_screan(conf->map.map, conf);

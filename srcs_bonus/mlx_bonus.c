@@ -18,6 +18,7 @@ void	desplay_counter(t_conf *conf)
 
 	s_counter = ft_itoa(conf->player.n_steps);
 	mlx_string_put(conf->mlx, conf->win, 10, 20, 0xFFFFFF, s_counter);
+	free(s_counter);
 }
 
 void	array_to_screan(char **map, t_conf *conf)
