@@ -112,7 +112,7 @@ void	ft_swap(char *a, char *b);
 
 //free_bonus.c
 char	**ft_arrayfree(char **tab);
-void	free_all_exit(t_conf *conf);
+int	free_all_exit(t_conf *conf);
 
 //map_check_bonus.c
 void	rectangular_check(char **map, t_conf *conf);
