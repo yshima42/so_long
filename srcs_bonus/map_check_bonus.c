@@ -88,5 +88,5 @@ void	n_char_check(char **map, t_conf *conf)
 		|| !conf->map.n_collectibles || conf->map.n_enemies != 1
 		|| conf->map.n_unis != 1)
 		map_error_output(map,
-			"Need one P, E, and U, and more than one C in the file\n");
+			"Need one P, E, T, and U, and more than one C in the file\n");
 }

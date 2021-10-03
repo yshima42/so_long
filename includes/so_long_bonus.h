@@ -99,9 +99,6 @@ typedef struct s_conf
 # define S_KEY 115
 # define D_KEY 100
 
-// is it OK?????
-# define ABS(n) (n * ((n < 0) ? -1 : 1 ))
-
 //initialize_bonus.c
 void	initialize_conf(t_conf *conf);
 void	initialize_conf2(t_conf *conf);
@@ -115,7 +112,7 @@ void	ft_swap(char *a, char *b);
 
 //free_bonus.c
 char	**ft_arrayfree(char **tab);
-int		free_all_exit(t_conf *conf);
+void	free_all_exit(t_conf *conf);
 
 //map_check_bonus.c
 void	rectangular_check(char **map, t_conf *conf);

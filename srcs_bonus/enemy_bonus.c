@@ -19,23 +19,22 @@ void	enemy_step_to_next(char *current_pos, char *next_pos, t_conf *conf)
 		ft_swap(current_pos, next_pos);
 }
 
+int	ft_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	else
+		return (n);
+}
+
 void	uni_move(int u_y, int u_x, t_conf *conf)
 {
 	int	dis_x;
 	int	dis_y;
 
-	dis_x = ABS(conf->player.pos_x - u_x);
-	dis_y = ABS(conf->player.pos_y - u_y);
-	if (dis_y > dis_x)
-	{
-		if ((conf->player.pos_y < u_y))
-			enemy_step_to_next(&conf->map.map[u_y][u_x],
-				&conf->map.map[u_y - 1][u_x], conf);
-		else
-			enemy_step_to_next(&conf->map.map[u_y][u_x],
-				&conf->map.map[u_y + 1][u_x], conf);
-	}
-	else
+	dis_x = ft_abs(conf->player.pos_x - u_x);
+	dis_y = ft_abs(conf->player.pos_y - u_y);
+	if (dis_x >= dis_y)
 	{
 		if (conf->player.pos_x < u_x)
 			enemy_step_to_next(&conf->map.map[u_y][u_x],
@@ -43,6 +42,15 @@ void	uni_move(int u_y, int u_x, t_conf *conf)
 		else
 			enemy_step_to_next(&conf->map.map[u_y][u_x],
 				&conf->map.map[u_y][u_x + 1], conf);
+	}
+	else
+	{
+		if ((conf->player.pos_y < u_y))
+			enemy_step_to_next(&conf->map.map[u_y][u_x],
+				&conf->map.map[u_y - 1][u_x], conf);
+		else
+			enemy_step_to_next(&conf->map.map[u_y][u_x],
+				&conf->map.map[u_y + 1][u_x], conf);
 	}
 }
 
