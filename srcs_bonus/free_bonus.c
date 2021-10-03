@@ -27,6 +27,20 @@ char	**ft_arrayfree(char **tab)
 	return (NULL);
 }
 
+void	free_mlx_win(t_conf *conf)
+{
+	if (conf->images.uni)
+		mlx_destroy_image(conf->mlx, conf->images.uni);
+	if (conf->win)
+		mlx_destroy_window(conf->mlx, conf->win);
+	if (conf->mlx)
+	{
+		mlx_destroy_display(conf->mlx);
+		mlx_loop_end(conf->mlx);
+		free(conf->mlx);
+	}
+}
+
 int	free_all_exit(t_conf *conf)
 {
 	if (conf->map.map)
@@ -43,16 +57,7 @@ int	free_all_exit(t_conf *conf)
 		mlx_destroy_image(conf->mlx, conf->images.player);
 	if (conf->images.enemy)
 		mlx_destroy_image(conf->mlx, conf->images.enemy);
-	if (conf->images.uni)
-		mlx_destroy_image(conf->mlx, conf->images.uni);
-	if (conf->win)
-		mlx_destroy_window(conf->mlx, conf->win);
-	if (conf->mlx)
-	{
-		mlx_destroy_display(conf->mlx);
-		mlx_loop_end(conf->mlx);
-		free(conf->mlx);
-	}
+	free_mlx_win(conf);
 	exit (EXIT_SUCCESS);
 	return (0);
 }
