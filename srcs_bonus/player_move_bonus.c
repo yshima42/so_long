@@ -43,6 +43,7 @@ void	game_complete(char *a, char *b, t_conf *conf)
 {	
 	if (conf->player.collectibles == conf->map.n_collectibles)
 	{
+		step_counter(conf);
 		*b = *a;
 		*a = '0';
 		pos_check(conf->map.map, conf);
@@ -57,6 +58,7 @@ static void	game_over(char *a, char *b, t_conf *conf)
 {	
 	*b = *a;
 	*a = '0';
+	step_counter(conf);
 	pos_check(conf->map.map, conf);
 	array_to_screan(conf->map.map, conf);
 	game_finish_animation(IMG_PLAYER_3, IMG_PLAYER_4, conf);

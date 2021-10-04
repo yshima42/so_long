@@ -18,7 +18,7 @@ BONUS_OBJS		= 	$(BONUS_FILES:.c=.o)
 LIBFTMAKE		= 	$(MAKE) -C $(LIBFT_PATH)
 LIBFTFLAG		= 	-L$(LIBFT_PATH) -lft
 MLXMAKE			= 	$(MAKE) -C $(MLX_PATH)
-MLXFLAG			= 	-Lmlx_linux -lmlx -lXext -lX11 -lm -lbsd -Imlx_linux
+MLXFLAG			= 	-Lmlx_linux -lmlx -Imlx_linux -lXext -lX11 -lm -lz
 GITMLX			= 	git clone https://github.com/42Paris/minilibx-linux.git mlx_linux
 
 all:			$(NAME)

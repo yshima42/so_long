@@ -48,6 +48,7 @@ void	game_complete(char *a, char *b, t_conf *conf)
 {	
 	if (conf->player.collectibles == conf->map.n_collectibles)
 	{
+		step_counter(conf);
 		*b = *a;
 		*a = '0';
 		ft_putstr_fd("Game Clear!!\n", 1);
