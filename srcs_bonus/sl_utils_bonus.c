@@ -58,10 +58,30 @@ void	chip_set(t_conf *conf)
 			&conf->images.size, &conf->images.size);
 	if (!conf->images.player)
 		error_mlx(conf);
+	conf->images.player2 = mlx_xpm_file_to_image(conf->mlx, IMG_PLAYER_2,
+			&conf->images.size, &conf->images.size);
+	if (!conf->images.player2)
+		error_mlx(conf);
 }
 
 void	chip_set2(t_conf *conf)
 {
+	conf->images.player3 = mlx_xpm_file_to_image(conf->mlx, IMG_PLAYER_3,
+			&conf->images.size, &conf->images.size);
+	if (!conf->images.player3)
+		error_mlx(conf);
+	conf->images.player4 = mlx_xpm_file_to_image(conf->mlx, IMG_PLAYER_4,
+			&conf->images.size, &conf->images.size);
+	if (!conf->images.player4)
+		error_mlx(conf);
+	conf->images.player5 = mlx_xpm_file_to_image(conf->mlx, IMG_PLAYER_5,
+			&conf->images.size, &conf->images.size);
+	if (!conf->images.player5)
+		error_mlx(conf);
+	conf->images.enemy2 = mlx_xpm_file_to_image(conf->mlx, IMG_ENEMY_2,
+			&conf->images.size, &conf->images.size);
+	if (!conf->images.enemy2)
+		error_mlx(conf);
 	conf->images.enemy = mlx_xpm_file_to_image(conf->mlx, IMG_ENEMY_1,
 			&conf->images.size, &conf->images.size);
 	if (!conf->images.enemy)

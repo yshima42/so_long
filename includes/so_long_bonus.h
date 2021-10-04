@@ -58,7 +58,12 @@ typedef struct s_images
 	void	*collectible;
 	void	*exit;
 	void	*player;
+	void	*player2;
+	void	*player3;
+	void	*player4;
+	void	*player5;
 	void	*enemy;
+	void	*enemy2;
 	void	*uni;
 	int		size;
 }	t_images;
@@ -103,7 +108,7 @@ typedef struct s_conf
 void	pos_check(char **map, t_conf *conf);
 
 //animation_bonus.c
-void	ani_to_dis(int pos_y, int pos_x, char **map, t_conf *conf);
+void	ani_to_dis(int pos_y, int pos_x, void *img_ptr, t_conf *conf);
 int		animation(t_conf *conf);
 
 //enemy_bonus.c
@@ -140,7 +145,7 @@ void	hook_loop_mlx(t_conf *conf);
 //player_action_bonus.c
 int		next_pos_check(char next_pos_c, char check_c);
 void	collect_item(char *a, char *b, t_conf *conf);
-void	game_finish_animation(char *img1, char *img2, t_conf *conf);
+void	game_finish_animation(void *img1, void *img2, t_conf *conf);
 
 //player_move_bonus.c
 void	player_move(int keycode, t_conf *conf);

@@ -26,7 +26,9 @@ all:			$(NAME)
 $(MLX_PATH):
 				$(GITMLX)
 
-$(NAME):		$(MLX_PATH) $(SRCS_OBJS) lib mlx
+$(NAME):		$(MLX_PATH) $(SRCS_OBJS)
+				$(LIBFTMAKE)
+				$(MLXMAKE)
 				$(CC) $(CFLAGS) $(SRCS_OBJS) $(LIBFTFLAG) $(MLXFLAG) -o $(NAME)
 
 lib:

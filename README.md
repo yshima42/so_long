@@ -1,5 +1,11 @@
 # remaining tasks
 
+- bonus relink
+- animation
+- screan size ok
+- after pressing -  ok
+
+
 - after invalid char, it starts from the different place
 
 - scroll ok

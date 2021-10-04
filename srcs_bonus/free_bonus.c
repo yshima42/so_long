@@ -41,10 +41,8 @@ void	free_mlx_win(t_conf *conf)
 	}
 }
 
-int	free_all_exit(t_conf *conf)
+void	free_chip1(t_conf *conf)
 {
-	if (conf->map.map)
-		conf->map.map = ft_arrayfree(conf->map.map);
 	if (conf->images.empty)
 		mlx_destroy_image(conf->mlx, conf->images.empty);
 	if (conf->images.wall)
@@ -55,8 +53,30 @@ int	free_all_exit(t_conf *conf)
 		mlx_destroy_image(conf->mlx, conf->images.exit);
 	if (conf->images.player)
 		mlx_destroy_image(conf->mlx, conf->images.player);
+	if (conf->images.player2)
+		mlx_destroy_image(conf->mlx, conf->images.player2);
+	if (conf->images.player3)
+		mlx_destroy_image(conf->mlx, conf->images.player3);
+	if (conf->images.player4)
+		mlx_destroy_image(conf->mlx, conf->images.player4);
+	if (conf->images.player5)
+		mlx_destroy_image(conf->mlx, conf->images.player5);
+}
+
+void	free_chip2(t_conf *conf)
+{
 	if (conf->images.enemy)
 		mlx_destroy_image(conf->mlx, conf->images.enemy);
+	if (conf->images.enemy2)
+		mlx_destroy_image(conf->mlx, conf->images.enemy2);	
+}
+
+int	free_all_exit(t_conf *conf)
+{
+	if (conf->map.map)
+		conf->map.map = ft_arrayfree(conf->map.map);
+	free_chip1(conf);
+	free_chip2(conf);
 	free_mlx_win(conf);
 	exit (EXIT_SUCCESS);
 	return (0);

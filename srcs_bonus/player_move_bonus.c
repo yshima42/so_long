@@ -48,7 +48,7 @@ void	game_complete(char *a, char *b, t_conf *conf)
 		*a = '0';
 		pos_check(conf->map.map, conf);
 		array_to_screan(conf->map.map, conf);
-		game_finish_animation(IMG_PLAYER_5, IMG_PLAYER, conf);
+		game_finish_animation(conf->images.player, conf->images.player5, conf);
 		ft_putstr_fd("Game Clear!!\n", 1);
 		free_all_exit(conf);
 	}
@@ -61,7 +61,7 @@ static void	game_over(char *a, char *b, t_conf *conf)
 	step_counter(conf);
 	pos_check(conf->map.map, conf);
 	array_to_screan(conf->map.map, conf);
-	game_finish_animation(IMG_PLAYER_3, IMG_PLAYER_4, conf);
+	game_finish_animation(conf->images.player3, conf->images.player4, conf);
 	ft_putstr_fd("Game Over: You lost all coins!!\n", 1);
 	free_all_exit(conf);
 }

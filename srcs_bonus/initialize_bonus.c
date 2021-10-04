@@ -29,13 +29,18 @@ void	initialize_conf(t_conf *conf)
 	conf->images.collectible = NULL;
 	conf->images.exit = NULL;
 	conf->images.player = NULL;
-	conf->images.enemy = NULL;
-	conf->images.uni = NULL;
-	conf->images.size = CHIP_SIZE;
+	conf->images.player2 = NULL;
+	conf->images.player3 = NULL;
+	conf->images.player4 = NULL;
+	conf->images.player5 = NULL;
 }
 
 void	initialize_conf2(t_conf *conf)
 {
+	conf->images.enemy = NULL;
+	conf->images.enemy2 = NULL;
+	conf->images.uni = NULL;
+	conf->images.size = CHIP_SIZE;
 	conf->player.pos_y = 0;
 	conf->player.pos_x = 0;
 	conf->player.n_steps = 0;
