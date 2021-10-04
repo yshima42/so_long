@@ -18,7 +18,7 @@ BONUS_OBJS		= 	$(BONUS_FILES:.c=.o)
 LIBFTMAKE		= 	$(MAKE) -C $(LIBFT_PATH)
 LIBFTFLAG		= 	-L$(LIBFT_PATH) -lft
 MLXMAKE			= 	$(MAKE) -C $(MLX_PATH)
-MLXFLAG			= 	-Lmlx_linux -lmlx -Imlx_linux -lXext -lX11 -lm -lz
+MLXFLAG			= 	-Lmlx_linux -lmlx -Imlx_linux -lXext -lX11 -lm
 GITMLX			= 	git clone https://github.com/42Paris/minilibx-linux.git mlx_linux
 
 all:			$(NAME)
@@ -53,4 +53,4 @@ re:				fclean all
 bonus:			$(MLX_PATH) $(BONUS_OBJS) lib mlx
 				$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFTFLAG) $(MLXFLAG) -o $(NAME)
 
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean bonus lib mlx re
