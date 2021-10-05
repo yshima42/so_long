@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 00:21:10 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/10/03 00:21:16 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/05 14:51:27 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,17 @@ int	animation(t_conf *conf)
 	count++;
 	if (count == 5000)
 	{
-		ani_to_dis(conf->player.pos_y, conf->player.pos_x, conf->images.player, conf);
-		ani_to_dis(conf->enemy.pos_y, conf->enemy.pos_x, conf->images.enemy, conf);
+		ani_to_dis(conf->player.pos_y, conf->player.pos_x,
+			conf->images.player, conf);
+		ani_to_dis(conf->enemy.pos_y, conf->enemy.pos_x,
+			conf->images.enemy, conf);
 	}
 	else if (count == 10000)
 	{
-		ani_to_dis(conf->player.pos_y, conf->player.pos_x, conf->images.player2, conf);
-		ani_to_dis(conf->enemy.pos_y, conf->enemy.pos_x, conf->images.enemy2, conf);
+		ani_to_dis(conf->player.pos_y, conf->player.pos_x,
+			conf->images.player2, conf);
+		ani_to_dis(conf->enemy.pos_y, conf->enemy.pos_x,
+			conf->images.enemy2, conf);
 	}
 	if (count == 10000)
 		count = 0;

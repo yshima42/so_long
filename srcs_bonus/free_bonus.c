@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 16:09:27 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/10/03 00:23:52 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/05 14:51:58 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	free_chip2(t_conf *conf)
 	if (conf->images.enemy)
 		mlx_destroy_image(conf->mlx, conf->images.enemy);
 	if (conf->images.enemy2)
-		mlx_destroy_image(conf->mlx, conf->images.enemy2);	
+		mlx_destroy_image(conf->mlx, conf->images.enemy2);
 }
 
 int	free_all_exit(t_conf *conf)

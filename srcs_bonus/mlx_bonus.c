@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 22:03:22 by yshimazu          #+#    #+#             */
-/*   Updated: 2021/10/03 00:27:19 by yshimazu         ###   ########.fr       */
+/*   Updated: 2021/10/05 14:50:48 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	desplay_mlx(t_conf *conf)
 {
 	int	size_y;
 	int	size_x;
-	
+
 	conf->mlx = mlx_init();
 	if (!conf->mlx)
 		error_mlx(conf);
@@ -88,7 +88,7 @@ void	desplay_mlx(t_conf *conf)
 int	expose(t_conf *conf)
 {
 	array_to_screan(conf->map.map, conf);
-	return(0);
+	return (0);
 }
 
 void	hook_loop_mlx(t_conf *conf)
