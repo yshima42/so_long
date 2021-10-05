@@ -29,17 +29,17 @@ int	animation(t_conf *conf)
 
 	pos_check(conf->map.map, conf);
 	count++;
-	if (count == 10000)
+	if (count == 5000)
 	{
 		ani_to_dis(conf->player.pos_y, conf->player.pos_x, conf->images.player, conf);
 		ani_to_dis(conf->enemy.pos_y, conf->enemy.pos_x, conf->images.enemy, conf);
 	}
-	else if (count == 20000)
+	else if (count == 10000)
 	{
 		ani_to_dis(conf->player.pos_y, conf->player.pos_x, conf->images.player2, conf);
 		ani_to_dis(conf->enemy.pos_y, conf->enemy.pos_x, conf->images.enemy2, conf);
 	}
-	if (count == 20000)
+	if (count == 10000)
 		count = 0;
 	return (0);
 }

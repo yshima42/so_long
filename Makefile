@@ -9,12 +9,17 @@ MLX_PATH		= 	./mlx_linux/
 SRCS_FILES    	= 	$(SRCS_PATH)main.c $(SRCS_PATH)utils.c $(SRCS_PATH)map_check.c \
 					$(SRCS_PATH)free.c $(SRCS_PATH)sl_utils.c $(SRCS_PATH)player_move.c \
 					$(SRCS_PATH)error.c $(SRCS_PATH)mlx.c
-SRCS_OBJS		= 	$(SRCS_FILES:.c=.o)
 BONUS_FILES    	= 	$(BONUS_PATH)main_bonus.c $(BONUS_PATH)utils_bonus.c $(BONUS_PATH)map_check_bonus.c \
 					$(BONUS_PATH)free_bonus.c $(BONUS_PATH)sl_utils_bonus.c $(BONUS_PATH)player_move_bonus.c \
 					$(BONUS_PATH)error_bonus.c $(BONUS_PATH)mlx_bonus.c $(BONUS_PATH)animation_bonus.c \
 					$(BONUS_PATH)initialize_bonus.c $(BONUS_PATH)enemy_bonus.c $(BONUS_PATH)player_action_bonus.c
+SRCS_OBJS		= 	$(SRCS_FILES:.c=.o)
 BONUS_OBJS		= 	$(BONUS_FILES:.c=.o)
+
+ifdef BONUS
+SRCS_OBJS        	= 	$(BONUS_OBJS)
+endif
+
 LIBFTMAKE		= 	$(MAKE) -C $(LIBFT_PATH)
 LIBFTFLAG		= 	-L$(LIBFT_PATH) -lft
 MLXMAKE			= 	$(MAKE) -C $(MLX_PATH)
@@ -26,7 +31,7 @@ all:			$(NAME)
 $(MLX_PATH):
 				$(GITMLX)
 
-$(NAME):		$(MLX_PATH) $(SRCS_OBJS)
+$(NAME):		$(SRCS_OBJS)
 				$(LIBFTMAKE)
 				$(MLXMAKE)
 				$(CC) $(CFLAGS) $(SRCS_OBJS) $(LIBFTFLAG) $(MLXFLAG) -o $(NAME)
@@ -52,7 +57,7 @@ fclean:			clean
 
 re:				fclean all
 
-bonus:			$(MLX_PATH) $(BONUS_OBJS) lib mlx
-				$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFTFLAG) $(MLXFLAG) -o $(NAME)
+bonus:			
+				make BONUS=1
 
 .PHONY:			all clean fclean bonus lib mlx re
