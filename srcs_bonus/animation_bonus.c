@@ -12,7 +12,7 @@
 
 #include "../includes/so_long_bonus.h"
 
-void	ani_to_dis(int pos_y, int pos_x, void *img_ptr, t_conf *conf)
+void	chip_ani(int pos_y, int pos_x, void *img_ptr, t_conf *conf)
 {
 	size_t	scroll_y;
 	size_t	scroll_x;
@@ -31,19 +31,25 @@ int	animation(t_conf *conf)
 	count++;
 	if (count == 5000)
 	{
-		ani_to_dis(conf->player.pos_y, conf->player.pos_x,
+		chip_ani(conf->player.pos_y, conf->player.pos_x,
 			conf->images.player, conf);
-		ani_to_dis(conf->enemy.pos_y, conf->enemy.pos_x,
+		chip_ani(conf->enemy.pos_y, conf->enemy.pos_x,
 			conf->images.enemy, conf);
 	}
 	else if (count == 10000)
 	{
-		ani_to_dis(conf->player.pos_y, conf->player.pos_x,
+		chip_ani(conf->player.pos_y, conf->player.pos_x,
 			conf->images.player2, conf);
-		ani_to_dis(conf->enemy.pos_y, conf->enemy.pos_x,
+		chip_ani(conf->enemy.pos_y, conf->enemy.pos_x,
 			conf->images.enemy2, conf);
 	}
 	if (count == 10000)
 		count = 0;
+	return (0);
+}
+
+int	expose(t_conf *conf)
+{
+	array_to_screan(conf->map.map, conf);
 	return (0);
 }

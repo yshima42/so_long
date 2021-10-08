@@ -17,7 +17,7 @@ SRCS_OBJS		= 	$(SRCS_FILES:.c=.o)
 BONUS_OBJS		= 	$(BONUS_FILES:.c=.o)
 
 ifdef BONUS
-SRCS_OBJS        	= 	$(BONUS_OBJS)
+SRCS_OBJS       = 	$(BONUS_OBJS)
 endif
 
 LIBFTMAKE		= 	$(MAKE) -C $(LIBFT_PATH)

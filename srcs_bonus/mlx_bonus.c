@@ -85,12 +85,6 @@ void	desplay_mlx(t_conf *conf)
 	array_to_screan(conf->map.map, conf);
 }
 
-int	expose(t_conf *conf)
-{
-	array_to_screan(conf->map.map, conf);
-	return (0);
-}
-
 void	hook_loop_mlx(t_conf *conf)
 {
 	mlx_hook(conf->win, 2, 1L << 0, key_hook, conf);

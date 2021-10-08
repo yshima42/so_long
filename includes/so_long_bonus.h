@@ -108,8 +108,9 @@ typedef struct s_conf
 void	pos_check(char **map, t_conf *conf);
 
 //animation_bonus.c
-void	ani_to_dis(int pos_y, int pos_x, void *img_ptr, t_conf *conf);
+void	chip_ani(int pos_y, int pos_x, void *img_ptr, t_conf *conf);
 int		animation(t_conf *conf);
+int		expose(t_conf *conf);
 
 //enemy_bonus.c
 void	uni_move(int u_y, int u_x, t_conf *conf);

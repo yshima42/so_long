@@ -33,10 +33,10 @@ static void	anime_loop(void *img1, void *img2, t_conf *conf)
 
 	count = 0;
 	while (++count < 15000)
-		ani_to_dis(conf->player.pos_y, conf->player.pos_x,
+		chip_ani(conf->player.pos_y, conf->player.pos_x,
 			img1, conf);
 	while (++count < 30000)
-		ani_to_dis(conf->player.pos_y, conf->player.pos_x,
+		chip_ani(conf->player.pos_y, conf->player.pos_x,
 			img2, conf);
 }
 
