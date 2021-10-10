@@ -80,7 +80,7 @@ int	main(int ac, char **av)
 	conf.map.map = map_set(av[1], &conf);
 	map_check(conf.map.map, &conf);
 	pos_check(conf.map.map, &conf);
-	desplay_mlx(&conf);
+	display_mlx(&conf);
 	mlx_loop_hook(conf.mlx, animation, &conf);
 	hook_loop_mlx(&conf);
 }

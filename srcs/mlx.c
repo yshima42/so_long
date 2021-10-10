@@ -52,7 +52,7 @@ int	key_hook(int keycode, t_conf *conf)
 	return (0);
 }
 
-void	desplay_mlx(t_conf *conf)
+void	display_mlx(t_conf *conf)
 {
 	int	size_x;
 	int	size_y;

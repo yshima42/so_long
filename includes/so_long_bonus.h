@@ -140,7 +140,7 @@ void	n_char_check(char **map, t_conf *conf);
 
 //mlx_bonus.c
 void	array_to_screan(char **map, t_conf *conf);
-void	desplay_mlx(t_conf *conf);
+void	display_mlx(t_conf *conf);
 void	hook_loop_mlx(t_conf *conf);
 
 //player_action_bonus.c

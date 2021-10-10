@@ -115,7 +115,7 @@ void	args_check(int ac, char **av);
 void	array_to_screan(char **map, t_conf *conf);
 int		key_hook(int keycode, t_conf *conf);
 void	hook_loop_mlx(t_conf *conf);
-void	desplay_mlx(t_conf *conf);
+void	display_mlx(t_conf *conf);
 
 //main.c
 void	player_pos_check(char **map, t_conf *conf);

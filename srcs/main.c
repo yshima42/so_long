@@ -86,6 +86,6 @@ int	main(int ac, char **av)
 	conf.map.map = map_set(av[1], &conf);
 	map_check(conf.map.map, &conf);
 	player_pos_check(conf.map.map, &conf);
-	desplay_mlx(&conf);
+	display_mlx(&conf);
 	hook_loop_mlx(&conf);
 }
